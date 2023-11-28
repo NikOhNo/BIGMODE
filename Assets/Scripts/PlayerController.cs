@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -19,8 +20,10 @@ public class PlayerController : MonoBehaviour
     private float speed = 5f;
     [SerializeField]
     private float jumpForce = 5f;
+    //[SerializeField]
+    //private float smoothInputSpeed = .2f;
     [SerializeField]
-    private float smoothInputSpeed = .2f;
+    private bool isMage = true;
 
     //-- PROPERTIES
     //public PlayerSettings PlayerSettings => playerSettings;
@@ -55,7 +58,19 @@ public class PlayerController : MonoBehaviour
     }
     public void Attack(CallbackContext context) 
     {
-        Debug.Log("Todo: Attack");
+        //may also want to have a condition where the player needs to wait at least "x" seconds before doing another attack, say .5 or .4
+        if (isMage) 
+        {
+            //play spell attack animation and sfx
+            Debug.Log("Spell basic attack");
+        }
+        else 
+        {
+            //play sword attack animation and sfx
+            Debug.Log("Sword basic attack");
+        }
+        //Note: still need to integrate the two switch attacks into this logic
+
     }
     public void Move(CallbackContext context) 
     { //.perform, .press, .release
@@ -70,6 +85,15 @@ public class PlayerController : MonoBehaviour
         {
             // Apply upward force to make the character jump
             myRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        }
+    }
+
+    public void Switch(CallbackContext context)
+    {
+        Debug.Log(context);
+        if (context.performed)
+        {
+            isMage ^= true; //true becomes false; false becomes true
         }
     }
 
