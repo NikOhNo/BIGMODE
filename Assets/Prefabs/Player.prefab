@@ -268,6 +268,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 303db7e8-f70c-48ff-bcf3-c8bcddef8dfa
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2162224656283483558}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: Switch
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6f802b5d-0ca9-472b-a2e1-511aa9e52137
+    m_ActionName: Player/Switch[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -288,7 +304,7 @@ MonoBehaviour:
   feetCollider: {fileID: 9080664133864259046}
   speed: 5
   jumpForce: 5
-  smoothInputSpeed: 0.2
+  isMage: 1
   MoveInput: {x: 0, y: 0}
   SmoothedInputVector: {x: 0, y: 0}
 --- !u!1 &2495957587726327627
