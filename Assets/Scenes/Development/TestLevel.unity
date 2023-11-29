@@ -353,9 +353,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 229187831245560972, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 229187831245560972, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
+      propertyPath: m_GravityScale
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 292712413516176119, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2162224656283483558, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
+      propertyPath: jumpForce
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2162224656283483558, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
+      propertyPath: maxJumpTime
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 9203228930035397080, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
       propertyPath: m_RootOrder
