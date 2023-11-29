@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] 
     private float speed = 5f;
     [SerializeField]
-    private float jumpForce = 5f;
+    private float jumpForce = 10f;
     //[SerializeField]
     //private float smoothInputSpeed = .2f;
     [SerializeField]
@@ -30,11 +30,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float atkDelay = 0.5f; //tbd may change
     [SerializeField]
+    private float jumpTimer = 0f;
+    [SerializeField]
+    private float maxJumpTime = 0.25f;
+    [SerializeField]
+    private bool isJumping = false;
+    [SerializeField]
     private bool isAttacking = false;
     [SerializeField]
     private bool isMage = true;
     [SerializeField]
     private bool isSwitchAtk = false;
+    public int jumpCounter = 0;
 
 
     //-- PROPERTIES
@@ -71,6 +78,11 @@ public class PlayerController : MonoBehaviour
         if (Time.time - atkTimeStart > atkDelay) //only allows us to start attacking again after atkDelay
         {
             isAttacking = false;
+        }
+        
+        if (Time.time - jumpTimer < maxJumpTime) //jump is held
+        {
+            myRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
     }
     public void Attack(CallbackContext context)
@@ -116,12 +128,18 @@ public class PlayerController : MonoBehaviour
     }
     public void Jump(CallbackContext context)
     {
-        Debug.Log(context);
-    
+        //Debug.Log(jumpCounter++);
+
         if (context.performed && feetCollider.IsTouchingLayers()) //if touching any layers
         {
+            jumpTimer = Time.time;
             // Apply upward force to make the character jump
-            myRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            //myRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            //now done in update() to allow for hold jump to be higher than tap
+        }
+        else if (context.canceled)
+        {
+            jumpTimer = 0;
         }
     }
 
