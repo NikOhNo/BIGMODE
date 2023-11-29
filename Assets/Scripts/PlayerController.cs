@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using static UnityEngine.InputSystem.InputAction;
 
 public class PlayerController : MonoBehaviour
@@ -23,7 +24,18 @@ public class PlayerController : MonoBehaviour
     //[SerializeField]
     //private float smoothInputSpeed = .2f;
     [SerializeField]
+    private float atkTimeStart = 0f;
+    [SerializeField]
+    private float switchWindow = 1f; //tbd may change
+    [SerializeField]
+    private float atkDelay = 0.5f; //tbd may change
+    [SerializeField]
+    private bool isAttacking = false;
+    [SerializeField]
     private bool isMage = true;
+    [SerializeField]
+    private bool isSwitchAtk = false;
+
 
     //-- PROPERTIES
     //public PlayerSettings PlayerSettings => playerSettings;
@@ -45,7 +57,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -55,22 +67,47 @@ public class PlayerController : MonoBehaviour
 
         // Update myRb.velocity
         myRb.velocity = newVelocity;
-    }
-    public void Attack(CallbackContext context) 
-    {
-        //may also want to have a condition where the player needs to wait at least "x" seconds before doing another attack, say .5 or .4
-        if (isMage) 
-        {
-            //play spell attack animation and sfx
-            Debug.Log("Spell basic attack");
-        }
-        else 
-        {
-            //play sword attack animation and sfx
-            Debug.Log("Sword basic attack");
-        }
-        //Note: still need to integrate the two switch attacks into this logic
 
+        if (Time.time - atkTimeStart > atkDelay) //only allows us to start attacking again after atkDelay
+        {
+            isAttacking = false;
+        }
+    }
+    public void Attack(CallbackContext context)
+    {
+        //Debug.Log(context); //removed so seeing whether switch attacks or basic attacks are performed in debug log is easier
+        if (!isAttacking) 
+        { 
+            atkTimeStart = Time.time;
+            isAttacking = true;
+            if (isMage)
+            {
+                if (isSwitchAtk) //whether we attacked (switched) within switchWindow
+                {
+                    //play spell attack animation and sfx
+                    Debug.Log("Spell switch attack");
+                }
+                else
+                {
+                    //play spell attack animation and sfx
+                    Debug.Log("Spell basic attack");
+                }
+            }
+            else
+            {
+                if (isSwitchAtk)
+                {
+                    //play spell attack animation and sfx
+                    Debug.Log("Sword switch attack");
+                }
+                else
+                {
+                    //play sword attack animation and sfx
+                    Debug.Log("Sword basic attack");
+                }
+            }
+            isSwitchAtk = false;
+        }
     }
     public void Move(CallbackContext context) 
     { //.perform, .press, .release
@@ -90,10 +127,15 @@ public class PlayerController : MonoBehaviour
 
     public void Switch(CallbackContext context)
     {
-        Debug.Log(context);
-        if (context.performed)
+        //Debug.Log(context); //removed so seeing whether switch attacks or basic attacks are performed in debug log is easier
+        if (context.performed && !isAttacking)
         {
             isMage ^= true; //true becomes false; false becomes true
+            if (Time.time - atkTimeStart <= switchWindow) //if within switch window, do switch attack
+            {
+                isSwitchAtk = true;
+                Attack(context);
+            }
         }
     }
 
