@@ -30,11 +30,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float atkDelay = 0.5f; //tbd may change
     [SerializeField]
-    private float jumpTimer = 0f;
+    private float jumpTimer = -5f; 
     [SerializeField]
     private float maxJumpTime = 0.25f;
-    [SerializeField]
-    private bool isJumping = false;
     [SerializeField]
     private bool isAttacking = false;
     [SerializeField]
@@ -139,7 +137,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (context.canceled)
         {
-            jumpTimer = 0;
+            jumpTimer = -5;
         }
     }
 
