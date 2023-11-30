@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] 
     private float speed = 5f;
     [SerializeField]
-    private float jumpForce = 10f;
+    private float jumpForce = 7.5f;
     //[SerializeField]
     //private float smoothInputSpeed = .2f;
     [SerializeField]
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float jumpTimer = -5f; 
     [SerializeField]
-    private float maxJumpTime = 0.25f;
+    private float maxJumpTime = 0.1f;
     [SerializeField]
     private bool isAttacking = false;
     [SerializeField]
