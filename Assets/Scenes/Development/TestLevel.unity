@@ -878,7 +878,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2162224656283483558, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
       propertyPath: maxJumpTime
-      value: 0.1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2162224656283483558, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
       propertyPath: playerHurtbox

@@ -88,7 +88,9 @@ public class PlayerController : MonoBehaviour
         
         if (Time.time - jumpTimer < maxJumpTime) //jump is held
         {
-            myRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            //needed to get rid of AddForce() call to fix bug
+
+            myRb.velocity = new Vector2(myRb.velocity.x, jumpForce);
         }
     }
     public void Attack(CallbackContext context)
