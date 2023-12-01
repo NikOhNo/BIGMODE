@@ -8,7 +8,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private float moveSpeed = 5f;
     [SerializeField]
-    public int Health = 3;
+    public int health = 3;
     [SerializeField]
     private float maxVisionDistance = 10f;
     [SerializeField]
@@ -34,13 +34,6 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Health < 1)
-        {
-            //maybe award exp/currency here
-            //death animation/sfx
-            Debug.Log("Enemy Slain!");
-            Destroy(gameObject); //destroy self
-        }
         float distance = Vector3.Distance(transform.position, player.transform.position);
         if (distance < atkRange) 
         {
@@ -73,5 +66,19 @@ public class EnemyController : MonoBehaviour
     void Attack()
     {
         Debug.Log("Enemy Attacking Player!");
+    }
+
+    public void Hurt(int damage)
+    {
+        //play hurt sfx, vfx, maybe blood splatter or flash depending on game feel we want to go for
+        health -= damage;
+
+        if (health < 1) 
+        {
+            //maybe award exp/currency here
+            //death animation/sfx
+            Debug.Log("Enemy Slain!");
+            Destroy(gameObject); //destroy self
+        }
     }
 }

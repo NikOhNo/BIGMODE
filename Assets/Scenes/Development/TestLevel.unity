@@ -617,7 +617,7 @@ GameObject:
   - component: {fileID: 1300880285}
   - component: {fileID: 1300880284}
   - component: {fileID: 1300880288}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -766,7 +766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
-  Health: 3
+  health: 3
   maxVisionDistance: 10
   atkRange: 2
   player: {fileID: 1366145624}
@@ -848,6 +848,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9203228930035397080, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
   m_PrefabInstance: {fileID: 3884943347603629329}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1975322593
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1975322594}
+  m_Layer: 0
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1975322594
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1975322593}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1366145624}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3884943347603629329
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -877,6 +908,10 @@ PrefabInstance:
       value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 2162224656283483558, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
+      propertyPath: attackPoint
+      value: 
+      objectReference: {fileID: 1975322594}
+    - target: {fileID: 2162224656283483558, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
       propertyPath: maxJumpTime
       value: 0.2
       objectReference: {fileID: 0}
@@ -884,6 +919,18 @@ PrefabInstance:
       propertyPath: playerHurtbox
       value: 
       objectReference: {fileID: 1366145622}
+    - target: {fileID: 2162224656283483558, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
+      propertyPath: basicMeleeRange
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2162224656283483558, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
+      propertyPath: switchMeleeRange
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2162224656283483558, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
+      propertyPath: enemyLayers.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 9203228930035397080, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -931,6 +978,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 9203228930035397080, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1975322594}
     - targetCorrespondingSourceObject: {fileID: 9203228930035397080, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1072625953}
