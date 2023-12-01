@@ -10,19 +10,19 @@ using static UnityEngine.InputSystem.InputAction;
 public class PlayerController : MonoBehaviour
 {
 
-
-
     //-- SERIALIZED FIELDS
-    //[SerializeField]
-    //private PlayerSettings playerSettings;
+    //Large Structures
     [SerializeField]
     private BoxCollider2D feetCollider;
+    [SerializeField]
+    private Transform attackPoint;
+    [SerializeField]
+    private LayerMask enemyLayers;
+    //floats
     [SerializeField] 
     private float speed = 5f;
     [SerializeField]
     private float jumpForce = 7.5f;
-    //[SerializeField]
-    //private float smoothInputSpeed = .2f;
     [SerializeField]
     private float atkTimeStart = 0f;
     [SerializeField]
@@ -30,15 +30,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float atkDelay = 0.5f; //tbd may change
     [SerializeField]
-    private float jumpTimer = -5f; 
+    private float jumpTimer = -5f; //initialized as negative to prevent jumping at frame 0
     [SerializeField]
-    private float maxJumpTime = 0.1f;
+    private float maxJumpTime = 0.2f;
     [SerializeField]
-    private bool isAttacking = false;
+    private float basicMeleeRange = 1f;
     [SerializeField]
-    private bool isMage = true;
-    [SerializeField]
-    private bool isSwitchAtk = false;
+    private float switchMeleeRange = 1f;
+    //integers
     [SerializeField]
     private int health = 5;
     [SerializeField]
@@ -47,16 +46,17 @@ public class PlayerController : MonoBehaviour
     private int recoveryCurrency = 0; //think soul from hollow knight, we can decide on a name later
     [SerializeField]
     private int maxRecoveryCurrency = 100;
+    //bools
+    [SerializeField]
+    private bool isAttacking = false;
+    [SerializeField]
+    private bool isMage = true;
+    [SerializeField]
+    private bool isSwitchAtk = false;
+
 
 
     //-- PROPERTIES
-    //public PlayerSettings PlayerSettings => playerSettings;
-    public Vector2 MoveInput = new();
-    public Vector2 SmoothedInputVector = new();
-
-    private Vector2 smoothInputVelocity;
-
-    private PlayerController controller;
     private Rigidbody2D myRb;
     private Vector2 moveInput;
 
@@ -95,37 +95,52 @@ public class PlayerController : MonoBehaviour
     }
     public void Attack(CallbackContext context)
     {
-        //Debug.Log(context); //removed so seeing whether switch attacks or basic attacks are performed in debug log is easier
         if (!isAttacking) 
         { 
             atkTimeStart = Time.time;
             isAttacking = true;
+            int damageValue = 0;
             //if the attack hits an enemy we want to gain some recoveryCurrency
             //we can also decide how much we should get for each attack
-            if (isMage)
+            if (isMage) //projectile attacks
             {
+                //TODO: make projectiles
                 if (isSwitchAtk) //whether we attacked (switched) within switchWindow
                 {
                     //play spell attack animation and sfx
                     Debug.Log("Spell switch attack");
+                    damageValue = 1;
                 }
                 else
                 {
                     //play spell attack animation and sfx
                     Debug.Log("Spell basic attack");
+                    damageValue = 1;
                 }
             }
             else
             {
+                Collider2D[] enemiesHit = { };
                 if (isSwitchAtk)
                 {
                     //play spell attack animation and sfx
                     Debug.Log("Sword switch attack");
+                    enemiesHit = Physics2D.OverlapCircleAll(attackPoint.position, switchMeleeRange, enemyLayers);
+                    damageValue = 2;
+                    recoveryCurrency += 10; 
                 }
                 else
                 {
                     //play sword attack animation and sfx
                     Debug.Log("Sword basic attack");
+                    enemiesHit = Physics2D.OverlapCircleAll(attackPoint.position, basicMeleeRange, enemyLayers);
+                    damageValue = 1;
+                    recoveryCurrency += 10;
+                }
+                foreach (Collider2D enemy in enemiesHit)
+                {
+                    //in the future we should replace the call below with a call to an enemy hurt function
+                    enemy.GetComponent<EnemyController>().Hurt(damageValue);
                 }
             }
             isSwitchAtk = false;
@@ -133,8 +148,14 @@ public class PlayerController : MonoBehaviour
     }
     public void Move(CallbackContext context) 
     { //.perform, .press, .release
-        Debug.Log(context);
+        //Debug.Log(context);
+
         moveInput = context.ReadValue<Vector2>();
+        if (moveInput.x != 0)
+        {
+            //flip character along horizontal axis
+            //In gd script this would be: $AnimatedSprite2D.flip_h = moveInput.x < 0
+        }
     }
     public void Jump(CallbackContext context)
     {
@@ -194,5 +215,16 @@ public class PlayerController : MonoBehaviour
         health = maxHealth;
     }
 
+    //you can uncomment this script to see the hitbox for the Melee attacks
+    /*
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+            return;
+
+        Gizmos.DrawWireSphere(attackPoint.position, basicMeleeRange);
+    }
+
+    */
 
 }
