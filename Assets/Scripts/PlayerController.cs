@@ -57,6 +57,8 @@ public class PlayerController : MonoBehaviour
 
 
     //-- PROPERTIES
+    private SpriteRenderer sprite;
+    private Animator animator;
     private Rigidbody2D myRb;
     private Vector2 moveInput;
 
@@ -64,6 +66,8 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         myRb = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
@@ -79,6 +83,14 @@ public class PlayerController : MonoBehaviour
         // if running backwards flip the animation 
         // Update myRb.velocity
         myRb.velocity = newVelocity;
+        float absVelocityX = Mathf.Abs(newVelocity.x);
+        animator.SetFloat("Speed", absVelocityX);
+        //if the sprite is moving make the sprite face that direction
+        //otherwise keep the sprite facing in the direction we moved last
+        if (absVelocityX > 0.01) 
+        {
+            sprite.flipX = newVelocity.x > 0;
+        }
 
 
         if (Time.time - atkTimeStart > atkDelay) //only allows us to start attacking again after atkDelay
