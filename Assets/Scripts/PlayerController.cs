@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics.CodeAnalysis;
 using UnityEditor;
 using UnityEngine;
@@ -19,7 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private LayerMask enemyLayers;
     //floats
-    [SerializeField] 
+    [SerializeField]
     private float speed = 5f;
     [SerializeField]
     private float jumpForce = 7.5f;
@@ -35,6 +36,8 @@ public class PlayerController : MonoBehaviour
     private float maxJumpTime = 0.2f;
     [SerializeField]
     private float basicMeleeRange = 1f;
+    [SerializeField]
+    private float attackPositionX = 1f;
     [SerializeField]
     private float switchMeleeRange = 1f;
     //integers
@@ -61,6 +64,7 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private Rigidbody2D myRb;
     private Vector2 moveInput;
+    private Dictionary<bool, int> boolToInt = new Dictionary<bool, int> { { false, -1 }, {true, 1} };
 
     //Happens when gathering values before Start
     private void Awake()
@@ -90,6 +94,7 @@ public class PlayerController : MonoBehaviour
         if (absVelocityX > 0.01) 
         {
             sprite.flipX = newVelocity.x > 0;
+            attackPoint.position = new Vector2(myRb.position.x + boolToInt[newVelocity.x > 0] * attackPositionX, attackPoint.position.y);
         }
 
 
@@ -228,7 +233,7 @@ public class PlayerController : MonoBehaviour
     }
 
     //you can uncomment this script to see the hitbox for the Melee attacks
-    /*
+    
     private void OnDrawGizmosSelected()
     {
         if (attackPoint == null)
@@ -237,6 +242,6 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.position, basicMeleeRange);
     }
 
-    */
+ 
 
 }
