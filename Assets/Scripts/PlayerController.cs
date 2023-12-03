@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics.CodeAnalysis;
 using UnityEditor;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -19,6 +20,8 @@ public class PlayerController : MonoBehaviour
     private Transform attackPoint;
     [SerializeField]
     private LayerMask enemyLayers;
+    [SerializeField]
+    private GameObject projectilePrefab;
     //floats
     [SerializeField]
     private float speed = 5f;
@@ -58,13 +61,14 @@ public class PlayerController : MonoBehaviour
     private bool isSwitchAtk = false;
 
 
-
     //-- PROPERTIES
     private SpriteRenderer sprite;
     private Animator animator;
     private Rigidbody2D myRb;
     private Vector2 moveInput;
     private Dictionary<bool, int> boolToInt = new Dictionary<bool, int> { { false, -1 }, {true, 1} };
+    private float direction = -1f;
+
 
     //Happens when gathering values before Start
     private void Awake()
@@ -83,6 +87,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //I am considering moving all of the code in between the ----- to the move function since we'd call less things in update 
+        //and we no longer use Time.delta
+        //-----------------------------------------------------------------------------------
         Vector2 newVelocity = new Vector2(moveInput.x * speed, myRb.velocity.y);
         // if running backwards flip the animation 
         // Update myRb.velocity
@@ -94,9 +101,10 @@ public class PlayerController : MonoBehaviour
         if (absVelocityX > 0.01) 
         {
             sprite.flipX = newVelocity.x > 0;
-            attackPoint.position = new Vector2(myRb.position.x + boolToInt[newVelocity.x > 0] * attackPositionX, attackPoint.position.y);
+            direction = boolToInt[newVelocity.x > 0];
+            attackPoint.position = new Vector2(myRb.position.x + direction * attackPositionX, attackPoint.position.y);
         }
-
+        //------------------------------------------------------------------------------------
 
         if (Time.time - atkTimeStart > atkDelay) //only allows us to start attacking again after atkDelay
         {
@@ -126,13 +134,17 @@ public class PlayerController : MonoBehaviour
                 {
                     //play spell attack animation and sfx
                     Debug.Log("Spell switch attack");
+                    GameObject spell = Instantiate(projectilePrefab, new Vector3(attackPoint.position.x, myRb.position.y, 0), Quaternion.identity);
                     damageValue = 1;
+                    spell.GetComponent<PlayerProjectile>().Init(direction, damageValue);
                 }
                 else
                 {
                     //play spell attack animation and sfx
                     Debug.Log("Spell basic attack");
+                    GameObject spell = Instantiate(projectilePrefab, new Vector3(attackPoint.position.x, myRb.position.y, 0), projectilePrefab.transform.rotation);
                     damageValue = 1;
+                    spell.GetComponent<PlayerProjectile>().Init(direction, damageValue);
                 }
             }
             else
@@ -156,8 +168,10 @@ public class PlayerController : MonoBehaviour
                 }
                 foreach (Collider2D enemy in enemiesHit)
                 {
-                    //in the future we should replace the call below with a call to an enemy hurt function
-                    enemy.GetComponent<EnemyController>().Hurt(damageValue);
+                    if (enemy.GetComponent<EnemyController>() != null) 
+                    { 
+                        enemy.GetComponent<EnemyController>().Hurt(damageValue);
+                    }
                 }
             }
             isSwitchAtk = false;
