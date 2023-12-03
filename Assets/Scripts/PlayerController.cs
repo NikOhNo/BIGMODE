@@ -60,8 +60,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private bool isSwitchAtk = false;
 
-
     //-- PROPERTIES
+    public Vector2 MoveInput => moveInput;
+
+    //-- FIELDS
     private SpriteRenderer sprite;
     private Animator animator;
     private Rigidbody2D myRb;
