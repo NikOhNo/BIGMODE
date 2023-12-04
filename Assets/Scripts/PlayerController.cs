@@ -158,7 +158,6 @@ public class PlayerController : MonoBehaviour
                     Debug.Log("Sword switch attack");
                     enemiesHit = Physics2D.OverlapCircleAll(attackPoint.position, switchMeleeRange, enemyLayers);
                     damageValue = 2;
-                    recoveryCurrency += 10; 
                 }
                 else
                 {
@@ -166,13 +165,13 @@ public class PlayerController : MonoBehaviour
                     Debug.Log("Sword basic attack");
                     enemiesHit = Physics2D.OverlapCircleAll(attackPoint.position, basicMeleeRange, enemyLayers);
                     damageValue = 1;
-                    recoveryCurrency += 10;
                 }
                 foreach (Collider2D enemy in enemiesHit)
                 {
                     if (enemy.GetComponent<EnemyController>() != null) 
                     { 
                         enemy.GetComponent<EnemyController>().Hurt(damageValue);
+                        recoveryCurrency += 10;
                     }
                 }
             }
