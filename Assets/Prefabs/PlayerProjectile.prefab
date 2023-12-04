@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 400191410697940851}
   - component: {fileID: 2656614636338986192}
   - component: {fileID: 4604368179666672723}
+  - component: {fileID: 3626325036387506580}
   m_Layer: 0
   m_Name: PlayerProjectile
   m_TagString: Untagged
@@ -135,3 +136,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   lifetime: 3
+--- !u!95 &3626325036387506580
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6263785487918741173}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cc1fcbaf6c41d8a4999ca4ee51180104, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

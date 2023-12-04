@@ -143,6 +143,8 @@ public class PlayerController : MonoBehaviour
         { 
             atkTimeStart = Time.time;
             isAttacking = true;
+            
+            
             int damageValue = 0;
             //if the attack hits an enemy we want to gain some recoveryCurrency
             //we can also decide how much we should get for each attack
@@ -153,18 +155,17 @@ public class PlayerController : MonoBehaviour
                 {
                     //play spell attack animation and sfx
                     Debug.Log("Spell switch attack");
-                    GameObject spell = Instantiate(projectilePrefab, new Vector3(attackPoint.position.x, myRb.position.y, 0), Quaternion.identity);
-                    damageValue = 1;
-                    spell.GetComponent<PlayerProjectile>().Init(direction, damageValue);
                 }
                 else
                 {
                     //play spell attack animation and sfx
+                    animator.SetTrigger("spellBasicAttack");
                     Debug.Log("Spell basic attack");
-                    GameObject spell = Instantiate(projectilePrefab, new Vector3(attackPoint.position.x, myRb.position.y, 0), projectilePrefab.transform.rotation);
-                    damageValue = 1;
-                    spell.GetComponent<PlayerProjectile>().Init(direction, damageValue);
                 }
+                GameObject spell = Instantiate(projectilePrefab, new Vector3(attackPoint.position.x, myRb.position.y, 0), transform.rotation);
+                damageValue = 1;
+                spell.GetComponent<PlayerProjectile>().Init(direction, damageValue);
+                spell.GetComponent<SpriteRenderer>().flipX = !sprite.flipX; //sprite for projectile faces opposite direction of player by default, so we need the reverse
             }
             else
             {
