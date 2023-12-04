@@ -82,6 +82,17 @@ public class PlayerController : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+
+        GetComponent<PlayerInput>().actions.Enable();
+
+        if (!Mouse.current.enabled)
+        {
+            InputSystem.EnableDevice(Mouse.current);
+        }
+        if (!Keyboard.current.enabled)
+        {
+            InputSystem.EnableDevice(Keyboard.current);
+        }
     }
 
     // Start is called before the first frame update
