@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     //-- SERIALIZED FIELDS
     //Large Structures
     [SerializeField]
+    private AudioClip jumpSFX;
+    [SerializeField]
     private Canvas playerUI;
     [SerializeField]
     private BoxCollider2D feetCollider;
@@ -70,6 +72,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveInput;
     private Dictionary<bool, int> boolToInt = new Dictionary<bool, int> { { false, -1 }, {true, 1} };
     private float direction = -1f;
+    private AudioSource audioSource;
 
 
     //Happens when gathering values before Start
@@ -78,6 +81,7 @@ public class PlayerController : MonoBehaviour
         myRb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Start is called before the first frame update
@@ -194,6 +198,8 @@ public class PlayerController : MonoBehaviour
         if (context.performed && feetCollider.IsTouchingLayers()) //if touching any layers
         {
             jumpTimer = Time.time;
+            audioSource.PlayOneShot(jumpSFX);
+            //AudioSource.PlayClipAtPoint(jumpSFX, transform.position);
             // Apply upward force to make the character jump
             //myRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             //now done in update() to allow for hold jump to be higher than tap
