@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     //-- SERIALIZED FIELDS
     //Large Structures
     [SerializeField]
+    private Canvas playerUI;
+    [SerializeField]
     private BoxCollider2D feetCollider;
     [SerializeField]
     private Transform attackPoint;
@@ -233,6 +235,7 @@ public class PlayerController : MonoBehaviour
         //play hurt animation/sfx
         //consider dealing knockback to player
         health -= damage;
+        playerUI.GetComponent<UIController>().ChangeHealth(health);
         if (health < 1)
         {
             Death();
