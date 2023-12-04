@@ -70,6 +70,7 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private Rigidbody2D myRb;
     private Vector2 moveInput;
+    private Vector2 myVelocity;
     private Dictionary<bool, int> boolToInt = new Dictionary<bool, int> { { false, -1 }, {true, 1} };
     private float direction = -1f;
     private AudioSource audioSource;
@@ -104,30 +105,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //I am considering moving all of the code in between the ----- to the move function since we'd call less things in update 
-        //and we no longer use Time.delta
-        //-----------------------------------------------------------------------------------
-        Vector2 newVelocity = new Vector2(moveInput.x * speed, myRb.velocity.y);
-        // if running backwards flip the animation 
-        // Update myRb.velocity
-        myRb.velocity = newVelocity;
-        float absVelocityX = Mathf.Abs(newVelocity.x);
-        animator.SetFloat("Speed", absVelocityX);
-        //if the sprite is moving make the sprite face that direction
-        //otherwise keep the sprite facing in the direction we moved last
-        if (absVelocityX > 0.01) 
-        {
-            sprite.flipX = newVelocity.x > 0;
-            direction = boolToInt[newVelocity.x > 0];
-            attackPoint.position = new Vector2(myRb.position.x + direction * attackPositionX, attackPoint.position.y);
-        }
-        //------------------------------------------------------------------------------------
+        myRb.velocity = new Vector2(myVelocity.x, myRb.velocity.y);
 
-        if (Time.time - atkTimeStart > atkDelay) //only allows us to start attacking again after atkDelay
-        {
-            isAttacking = false;
-        }
-        
         if (Time.time - jumpTimer < maxJumpTime) //jump is held
         {
             //needed to get rid of AddForce() call to fix bug
@@ -135,15 +114,18 @@ public class PlayerController : MonoBehaviour
             myRb.velocity = new Vector2(myRb.velocity.x, jumpForce);
         }
     }
+
+    private void ResetAttack() //only allows us to start attacking again after atkDelay
+    {
+        isAttacking = false;
+    }
     public void Attack(CallbackContext context)
     {
         if (!isAttacking) 
         { 
-            atkTimeStart = Time.time;
             isAttacking = true;
-            
-            
             int damageValue = 0;
+            atkTimeStart = Time.time;
             //if the attack hits an enemy we want to gain some recoveryCurrency
             //we can also decide how much we should get for each attack
             if (isMage) //projectile attacks
@@ -192,17 +174,27 @@ public class PlayerController : MonoBehaviour
                 }
             }
             isSwitchAtk = false;
+            Invoke("ResetAttack", atkDelay);
         }
     }
     public void Move(CallbackContext context) 
     { //.perform, .press, .release
         //Debug.Log(context);
-
         moveInput = context.ReadValue<Vector2>();
-        if (moveInput.x != 0)
+        myVelocity = new Vector2(moveInput.x * speed, myRb.velocity.y);
+        // if running backwards flip the animation 
+        // Update myRb.velocity
+        myRb.velocity = myVelocity;
+        float absVelocityX = Mathf.Abs(myVelocity.x);
+        animator.SetFloat("Speed", absVelocityX);
+        //if the sprite is moving make the sprite face that direction
+        //otherwise keep the sprite facing in the direction we moved last
+        if (absVelocityX > 0.01)
         {
             //flip character along horizontal axis
-            //In gd script this would be: $AnimatedSprite2D.flip_h = moveInput.x < 0
+            sprite.flipX = myVelocity.x > 0;
+            direction = boolToInt[myVelocity.x > 0];
+            attackPoint.position = new Vector2(myRb.position.x + direction * attackPositionX, attackPoint.position.y);
         }
     }
     public void Jump(CallbackContext context)
