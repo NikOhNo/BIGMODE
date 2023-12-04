@@ -40,9 +40,11 @@ public class UIController : MonoBehaviour
     }
     */
 
-    void ChangeHealth(int newHealth) 
+    public void ChangeHealth(int newHealth) 
     {
+
         int changeBy = newHealth - health;
+        health = newHealth;
         if (changeBy > 0)
         {
             for (int i = 0;i < changeBy;i++) 
