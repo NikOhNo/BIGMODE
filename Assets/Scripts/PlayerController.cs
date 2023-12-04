@@ -47,6 +47,8 @@ public class PlayerController : MonoBehaviour
     private float attackPositionX = 1f;
     [SerializeField]
     private float switchMeleeRange = 1f;
+    [SerializeField]
+    private float projectileAcceleration = 5f;
     //integers
     [SerializeField]
     private int health = 5;
@@ -144,7 +146,7 @@ public class PlayerController : MonoBehaviour
                 }
                 GameObject spell = Instantiate(projectilePrefab, new Vector3(attackPoint.position.x, myRb.position.y, 0), transform.rotation);
                 damageValue = 1;
-                spell.GetComponent<PlayerProjectile>().Init(direction, damageValue);
+                spell.GetComponent<PlayerProjectile>().Init(direction, damageValue, myRb.velocity.x, projectileAcceleration);
                 spell.GetComponent<SpriteRenderer>().flipX = !sprite.flipX; //sprite for projectile faces opposite direction of player by default, so we need the reverse
             }
             else
