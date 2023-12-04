@@ -346,7 +346,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &560216320
 BoxCollider2D:
@@ -523,8 +523,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 455648625}
-  m_Father: {fileID: 1366145624}
-  m_RootOrder: -1
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -758,7 +758,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1300880288
 MonoBehaviour:
@@ -5647,7 +5647,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &1366145622 stripped
 CapsuleCollider2D:
@@ -5977,9 +5977,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9203228930035397080, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1975322594}
-    - targetCorrespondingSourceObject: {fileID: 9203228930035397080, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1072625953}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 292712413516176119, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
       insertIndex: -1
