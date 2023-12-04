@@ -53,7 +53,7 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         float distance = Vector3.Distance(myRb.position, player.transform.position);
-        if (distance < atkRange) 
+        if (distance < atkRange || isAttacking) //don't move while attacking
         {
             myRb.velocity = new Vector2(0f, myRb.velocity.y);
             if (!isAttacking)
