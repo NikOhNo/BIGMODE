@@ -211,6 +211,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerProjectile
       objectReference: {fileID: 0}
+    - target: {fileID: 6263785487918741173, guid: b92a7f89a2b469f49bcb0d0989231350, type: 3}
+      propertyPath: m_Layer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7662472542459595818, guid: b92a7f89a2b469f49bcb0d0989231350, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -5726,6 +5730,10 @@ PrefabInstance:
       propertyPath: playerUI
       value: 
       objectReference: {fileID: 1072625956}
+    - target: {fileID: 2495957587726327627, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 9203228930035397080, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
       propertyPath: m_RootOrder
       value: 1
