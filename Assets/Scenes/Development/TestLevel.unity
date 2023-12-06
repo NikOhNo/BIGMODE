@@ -5662,9 +5662,21 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2162224656283483558, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
+      propertyPath: healSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 5284fb53c71651741ad5a1777d35ff19, type: 3}
+    - target: {fileID: 2162224656283483558, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
+      propertyPath: landSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: a687a013f508c1346ad640d9697cf2e8, type: 3}
+    - target: {fileID: 2162224656283483558, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
       propertyPath: playerUI
       value: 
       objectReference: {fileID: 1072625956}
+    - target: {fileID: 2162224656283483558, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
+      propertyPath: switchSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 27a3ce2e5ef69f14588964001a5e713a, type: 3}
     - target: {fileID: 2162224656283483558, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
       propertyPath: recoveryCurrency
       value: 0
