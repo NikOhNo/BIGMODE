@@ -35,12 +35,14 @@ public class EnemyController : MonoBehaviour
     private Rigidbody2D myRb;
     public Transform player;
     private Dictionary<bool, int> boolToInt = new Dictionary<bool, int> { { false, -1 }, { true, 1 } };
+    private ParticleSystem part;
 
     private void Awake()
     {
         myRb = GetComponent<Rigidbody2D>();
         attackPoint.x = myRb.position.x + hitRange;
         attackPoint.y = myRb.position.y;
+        part = GetComponent<ParticleSystem>();
     }
 
     // Start is called before the first frame update
@@ -104,7 +106,7 @@ public class EnemyController : MonoBehaviour
 
     void QueueAttack()
     {
-        ParticleSystem part = this.GetComponent<ParticleSystem>();
+        
         part.Play();
         Debug.Log("Enemy Preparing Attack!");
     }

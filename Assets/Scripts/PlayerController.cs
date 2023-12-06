@@ -6,6 +6,7 @@ using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 using static UnityEngine.InputSystem.InputAction;
 
@@ -86,6 +87,8 @@ public class PlayerController : MonoBehaviour
     private Dictionary<bool, int> boolToInt = new Dictionary<bool, int> { { false, -1 }, {true, 1} };
     private float direction = -1f;
     private AudioSource audioSource;
+    private ParticleSystem pfx;
+    private UIController UIScript;
 
 
     //Happens when gathering values before Start
@@ -95,6 +98,8 @@ public class PlayerController : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        pfx = GetComponent<ParticleSystem>();
+        UIScript = playerUI.GetComponent<UIController>();
 
         GetComponent<PlayerInput>().actions.Enable();
 
@@ -258,8 +263,10 @@ public class PlayerController : MonoBehaviour
         if (recoveryCurrency >= maxRecoveryCurrency && health < maxHealth)
         {
             //show recovery particle efx
+            pfx.Play();
             audioSource.PlayOneShot(healSFX);
             health++;
+            UIScript.ChangeHealth(health);
             recoveryCurrency = 0;
         }
     }
@@ -269,7 +276,7 @@ public class PlayerController : MonoBehaviour
         //play hurt animation/sfx
         //consider dealing knockback to player
         health -= damage;
-        playerUI.GetComponent<UIController>().ChangeHealth(health);
+        UIScript.ChangeHealth(health);
         if (health < 1)
         {
             Death();
