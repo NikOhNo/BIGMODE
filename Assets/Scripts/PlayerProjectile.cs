@@ -6,6 +6,9 @@ using UnityEngine;
 public class PlayerProjectile : MonoBehaviour
 {
 
+    
+    private GameObject playerCtrl;
+    private PlayerController playerCtrlScript;
     [SerializeField]
     private float speed = 3f;
     [SerializeField]
@@ -14,6 +17,13 @@ public class PlayerProjectile : MonoBehaviour
     private float acceleration = 0;
     private float direction = 0f; //-1,1
     private int damageValue = 0;
+
+    private void Awake()
+    {
+        playerCtrl = GameObject.Find("Player");
+        playerCtrlScript = playerCtrl.GetComponent<PlayerController>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -49,6 +59,7 @@ public class PlayerProjectile : MonoBehaviour
         if (collision.GetComponent<EnemyController>() != null)
         {
             collision.GetComponent<EnemyController>().Hurt(damageValue);
+            playerCtrlScript.AddRangedRecovery();
             Destroy(gameObject);
         }
     }
