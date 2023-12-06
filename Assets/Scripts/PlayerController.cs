@@ -17,6 +17,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private AudioClip jumpSFX;
     [SerializeField]
+    private AudioClip landSFX;
+    [SerializeField]
+    private AudioClip healSFX;
+    [SerializeField]
+    private AudioClip switchSFX;
+    [SerializeField]
     private Canvas playerUI;
     [SerializeField]
     private BoxCollider2D feetCollider;
@@ -211,7 +217,6 @@ public class PlayerController : MonoBehaviour
         {
             jumpTimer = Time.time;
             audioSource.PlayOneShot(jumpSFX);
-            //AudioSource.PlayClipAtPoint(jumpSFX, transform.position);
             // Apply upward force to make the character jump
             //myRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             //now done in update() to allow for hold jump to be higher than tap
@@ -228,6 +233,8 @@ public class PlayerController : MonoBehaviour
         if (context.performed && !isAttacking)
         {
             isMage ^= true; //true becomes false; false becomes true
+            audioSource.PlayOneShot(switchSFX);
+            //switch animation somewhere here
             if (Time.time - atkTimeStart <= switchWindow) //if within switch window, do switch attack
             {
                 isSwitchAtk = true;
@@ -252,7 +259,8 @@ public class PlayerController : MonoBehaviour
     {
         if (recoveryCurrency >= maxRecoveryCurrency && health < maxHealth)
         {
-            //show recovery particle efx (and sfx?)
+            //show recovery particle efx
+            audioSource.PlayOneShot(healSFX);
             health++;
             recoveryCurrency = 0;
         }
@@ -279,7 +287,7 @@ public class PlayerController : MonoBehaviour
     }
 
     //you can uncomment this script to see the hitbox for the Melee attacks
-    
+    /*
     private void OnDrawGizmosSelected()
     {
         if (attackPoint == null)
@@ -287,7 +295,7 @@ public class PlayerController : MonoBehaviour
 
         Gizmos.DrawWireSphere(attackPoint.position, basicMeleeRange);
     }
+    */
 
- 
 
 }
