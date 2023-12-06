@@ -322,10 +322,13 @@ MonoBehaviour:
   basicMeleeRange: 0.5
   attackPositionX: 0.5
   switchMeleeRange: 0.5
+  projectileAcceleration: 5
   health: 5
   maxHealth: 5
   recoveryCurrency: 0
   maxRecoveryCurrency: 100
+  meleeRecovery: 10
+  rangedRecovery: 4
   isAttacking: 0
   isMage: 1
   isSwitchAtk: 0
@@ -487,7 +490,7 @@ GameObject:
   m_Component:
   - component: {fileID: 721210126238059174}
   - component: {fileID: 9080664133864259046}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
