@@ -11,17 +11,21 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private HorizontalLayoutGroup healthBar;
     [SerializeField]
+    private GameObject recoveryBar;
+    [SerializeField]
     private GameObject healthUnit;
     [SerializeField]
     private int health = 5;
+    private Slider recoveryBarSlider;
     private List<GameObject> healthList = new List<GameObject>(); //same as C++ vector
     //ideally we need a way to access the health from the player instead of from here
     
     // Start is called before the first frame update
     void Start()
     {
+        recoveryBarSlider = recoveryBar.GetComponent<Slider>();
         SpawnHealth();
-        //Invoke("CallChangeHealth", 5f); //tests changeHealth via CallChangeHealth
+        //Invoke("CallChangeHealth", 5); //tests changeHealth via CallChangeHealth
     }
 
     void SpawnHealth()
@@ -69,5 +73,10 @@ public class UIController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ChangeRecovery(int newRecovery)
+    {
+        recoveryBarSlider.value = newRecovery;
     }
 }

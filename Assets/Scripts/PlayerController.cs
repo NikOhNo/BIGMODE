@@ -268,9 +268,10 @@ public class PlayerController : MonoBehaviour
             pfx.Play();
             audioSource.PlayOneShot(healSFX);
             health++;
-            UIScript.ChangeHealth(health);
             recoveryCurrency = 0;
+            UIScript.ChangeHealth(health);
         }
+        UIScript.ChangeRecovery(recoveryCurrency);
     }
 
     public void Hurt(int damage) 
