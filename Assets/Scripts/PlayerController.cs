@@ -58,6 +58,10 @@ public class PlayerController : MonoBehaviour
     private int recoveryCurrency = 0; //think soul from hollow knight, we can decide on a name later
     [SerializeField]
     private int maxRecoveryCurrency = 100;
+    [SerializeField]
+    private int meleeRecovery = 10;
+    [SerializeField]
+    private int rangedRecovery = 4;
     //bools
     [SerializeField]
     private bool isAttacking = false;
@@ -173,7 +177,7 @@ public class PlayerController : MonoBehaviour
                     if (enemy.GetComponent<EnemyController>() != null) 
                     { 
                         enemy.GetComponent<EnemyController>().Hurt(damageValue);
-                        recoveryCurrency += 10;
+                        AddMeleeRecovery();
                     }
                 }
             }
@@ -231,10 +235,22 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
-    public void Recover()
+    
+    public void AddMeleeRecovery()
     {
-        if (recoveryCurrency >= maxRecoveryCurrency)
+        recoveryCurrency += meleeRecovery;
+        Recover();
+    }
+
+    public void AddRangedRecovery()
+    {
+        recoveryCurrency += rangedRecovery;
+        Recover();
+    }
+
+    private void Recover()
+    {
+        if (recoveryCurrency >= maxRecoveryCurrency && health < maxHealth)
         {
             //show recovery particle efx (and sfx?)
             health++;
