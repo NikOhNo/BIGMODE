@@ -305,6 +305,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpSFX: {fileID: 8300000, guid: c29651166b0113c41856a771cb68728c, type: 3}
+  landSFX: {fileID: 8300000, guid: a687a013f508c1346ad640d9697cf2e8, type: 3}
+  healSFX: {fileID: 8300000, guid: 5284fb53c71651741ad5a1777d35ff19, type: 3}
+  switchSFX: {fileID: 8300000, guid: 27a3ce2e5ef69f14588964001a5e713a, type: 3}
   playerUI: {fileID: 0}
   feetCollider: {fileID: 9080664133864259046}
   attackPoint: {fileID: 4474563895105806405}
