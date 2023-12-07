@@ -236,6 +236,7 @@ public class PlayerController : MonoBehaviour
         if (context.performed && !isAttacking)
         {
             isMage ^= true; //true becomes false; false becomes true
+            animator.SetTrigger("switch");
             audioSource.PlayOneShot(switchSFX);
             //switch animation somewhere here
             if (Time.time - atkTimeStart <= switchWindow) //if within switch window, do switch attack
