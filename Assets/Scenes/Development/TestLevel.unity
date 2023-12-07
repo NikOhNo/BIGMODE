@@ -945,7 +945,7 @@ MonoBehaviour:
   atkPositionX: 1
   atkDowntime: 0.5
   queueTime: 1
-  health: 3
+  health: 6
   isAttacking: 0
   player: {fileID: 1366145624}
 --- !u!199 &1300880289

@@ -31,7 +31,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private bool isAttacking = false;
 
-
+    private float direction = 0f;
+    private SpriteRenderer sprite;
     private Rigidbody2D myRb;
     public Transform player;
     private Dictionary<bool, int> boolToInt = new Dictionary<bool, int> { { false, -1 }, { true, 1 } };
@@ -39,23 +40,24 @@ public class EnemyController : MonoBehaviour
 
     private void Awake()
     {
+        
         myRb = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
         attackPoint.x = myRb.position.x + hitRange;
         attackPoint.y = myRb.position.y;
         part = GetComponent<ParticleSystem>();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        direction = mySign(player.transform.position.x - myRb.position.x);
     }
-
     // Update is called once per frame
     void Update()
     {
         float distance = Vector3.Distance(myRb.position, player.transform.position);
-        if (distance < atkRange || isAttacking) //don't move while attacking
+        float realDirection = mySign(player.transform.position.x - myRb.position.x);
+        if ((distance < atkRange && direction == realDirection)|| isAttacking) //attack when facing player and close, don't move while attacking
         {
             myRb.velocity = new Vector2(0f, myRb.velocity.y);
             if (!isAttacking)
@@ -86,7 +88,7 @@ public class EnemyController : MonoBehaviour
 
     void FollowPlayer()
     {
-        float direction = mySign(player.transform.position.x - myRb.position.x); 
+        direction = mySign(player.transform.position.x - myRb.position.x); 
         Vector2 newVelocity = new Vector2(moveSpeed * direction, myRb.velocity.y);
 
         // Update myRb.velocity
@@ -97,7 +99,7 @@ public class EnemyController : MonoBehaviour
         //otherwise keep the sprite facing in the direction we moved last
         if (absVelocityX > 0.01)
         {
-            //sprite.flipX = newVelocity.x > 0;
+            sprite.flipX = newVelocity.x > 0;
             direction = boolToInt[newVelocity.x > 0];
             attackPoint.x = myRb.position.x + direction * atkPositionX;
             attackPoint.y = myRb.position.y;
