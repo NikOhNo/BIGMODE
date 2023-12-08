@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7f279068a6f213b48872a910e859329f
+guid: 5df269f1658342f45bc3d8229ef06f7b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,7 +108,112 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: FORGET-ME-NOT-SPRITE-FIXED-CHOMP_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 100
+        height: 74
+      alignment: 9
+      pivot: {x: 0.7, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66474d80fddd80548b58c871b2f53b93
+      internalID: -835964950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FORGET-ME-NOT-SPRITE-FIXED-CHOMP_1
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 100
+        height: 74
+      alignment: 9
+      pivot: {x: 0.7, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5e4b78b76658f04bb3e450867a9e22a
+      internalID: -1951094348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FORGET-ME-NOT-SPRITE-FIXED-CHOMP_2
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 100
+        height: 74
+      alignment: 9
+      pivot: {x: 0.7, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90b3209ace8efc84b896ce4c34c45fe7
+      internalID: 815489973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FORGET-ME-NOT-SPRITE-FIXED-CHOMP_3
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 100
+        height: 74
+      alignment: 9
+      pivot: {x: 0.7, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 973ef44ada9f069448796e7f3183bf93
+      internalID: 146530799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FORGET-ME-NOT-SPRITE-FIXED-CHOMP_4
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 0
+        width: 100
+        height: 74
+      alignment: 9
+      pivot: {x: 0.7, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bc9849029fa10f45a18f5bff67fc17a
+      internalID: -1354311530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +224,12 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      FORGET-ME-NOT-SPRITE-FIXED-CHOMP_0: -835964950
+      FORGET-ME-NOT-SPRITE-FIXED-CHOMP_1: -1951094348
+      FORGET-ME-NOT-SPRITE-FIXED-CHOMP_2: 815489973
+      FORGET-ME-NOT-SPRITE-FIXED-CHOMP_3: 146530799
+      FORGET-ME-NOT-SPRITE-FIXED-CHOMP_4: -1354311530
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

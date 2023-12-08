@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.U2D;
 
-public class EnemyController : MonoBehaviour
+public class FMNController : MonoBehaviour
 {
     [SerializeField]
     private LayerMask playerLayer;
@@ -24,8 +22,6 @@ public class EnemyController : MonoBehaviour
     private float atkDowntime = .5f;
     [SerializeField]
     private float queueTime = 1f;
-    [SerializeField]
-    private float attackTime = .714f; //1-(2/7)
     [SerializeField]
     private int health = 3;
     [SerializeField]
@@ -58,7 +54,7 @@ public class EnemyController : MonoBehaviour
     {
         float distance = Vector3.Distance(myRb.position, player.transform.position);
         float realDirection = mySign(player.transform.position.x - myRb.position.x);
-        if ((distance < atkRange && direction == realDirection)|| isAttacking) //attack when facing player and close, don't move while attacking
+        if ((distance < atkRange && direction == realDirection) || isAttacking) //attack when facing player and close, don't move while attacking
         {
             myRb.velocity = new Vector2(0f, myRb.velocity.y);
             if (!isAttacking)
@@ -66,7 +62,6 @@ public class EnemyController : MonoBehaviour
                 isAttacking = true;
                 QueueAttack();
                 Invoke("Attack", queueTime);
-                Invoke("PlayAttack", attackTime);
             }
         }
         else if (distance < maxVisionDistance)
@@ -84,19 +79,19 @@ public class EnemyController : MonoBehaviour
     float mySign(float number) //returns -1, 0, or 1
     {
         if (number > 0.01f || number < -0.01f) //if number is not zero within floating point error
-            return Mathf.Sign(number); 
+            return Mathf.Sign(number);
         return 0;
     }
 
     void FollowPlayer()
     {
-        direction = mySign(player.transform.position.x - myRb.position.x); 
+        direction = mySign(player.transform.position.x - myRb.position.x);
         Vector2 newVelocity = new Vector2(moveSpeed * direction, myRb.velocity.y);
 
         // Update myRb.velocity
         myRb.velocity = newVelocity;
         float absVelocityX = Mathf.Abs(newVelocity.x);
-        //animator.SetFloat("Speed", absVelocityX);
+        animator.SetFloat("speed", absVelocityX);
         //if the sprite is moving make the sprite face that direction
         //otherwise keep the sprite facing in the direction we moved last
         if (absVelocityX > 0.01)
@@ -111,22 +106,19 @@ public class EnemyController : MonoBehaviour
     void QueueAttack()
     {
         part.Play();
+        animator.SetTrigger("queueAttack");
         Debug.Log("Enemy Preparing Attack!");
-    }
-
-    void PlayAttack()
-    {
-        animator.SetTrigger("attack");
     }
 
 
     void Attack()
     {
         Debug.Log("Enemy Attacking Player!");
+        animator.SetTrigger("attack");
         int damageValue = 1;
         // Currently set up to deal damage for a single frame
         Collider2D[] playerHit = Physics2D.OverlapCircleAll(attackPoint, hitRange, playerLayer);
-        foreach(Collider2D player in playerHit)
+        foreach (Collider2D player in playerHit)
         {
             if (player.GetComponent<PlayerController>() != null)
             {
@@ -148,7 +140,7 @@ public class EnemyController : MonoBehaviour
         //play hurt sfx, vfx, maybe blood splatter or flash depending on game feel we want to go for
         health -= damage;
 
-        if (health < 1) 
+        if (health < 1)
         {
             //maybe award exp/currency here
             //death animation/sfx
@@ -157,7 +149,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    
+    /*
     private void OnDrawGizmosSelected()
     {
         if (attackPoint == null)
@@ -165,5 +157,5 @@ public class EnemyController : MonoBehaviour
 
         Gizmos.DrawWireSphere(new Vector3(attackPoint.x, attackPoint.y, 0), hitRange);
     }
-    
+    */
 }
