@@ -30,6 +30,8 @@ public class EnemyController : MonoBehaviour
     private int health = 3;
     [SerializeField]
     private bool isAttacking = false;
+    [SerializeField]
+    private int EnemyID = 1; //Currently 1 is for Lily, 2 is for FMN
 
     private float direction = 0f;
     private SpriteRenderer sprite;
@@ -38,6 +40,7 @@ public class EnemyController : MonoBehaviour
     public Transform player;
     private Dictionary<bool, int> boolToInt = new Dictionary<bool, int> { { false, -1 }, { true, 1 } };
     private ParticleSystem part;
+    
 
     private void Awake()
     {
@@ -66,7 +69,9 @@ public class EnemyController : MonoBehaviour
                 isAttacking = true;
                 QueueAttack();
                 Invoke("Attack", queueTime);
-                Invoke("PlayAttack", attackTime);
+                if (EnemyID == 1) { //only want Play Attack for Lily
+                    Invoke("PlayAttack", attackTime);
+                }
             }
         }
         else if (distance < maxVisionDistance)
@@ -96,7 +101,7 @@ public class EnemyController : MonoBehaviour
         // Update myRb.velocity
         myRb.velocity = newVelocity;
         float absVelocityX = Mathf.Abs(newVelocity.x);
-        //animator.SetFloat("Speed", absVelocityX);
+        animator.SetFloat("speed", absVelocityX);
         //if the sprite is moving make the sprite face that direction
         //otherwise keep the sprite facing in the direction we moved last
         if (absVelocityX > 0.01)
@@ -111,6 +116,9 @@ public class EnemyController : MonoBehaviour
     void QueueAttack()
     {
         part.Play();
+        if (EnemyID == 2) { //If FMN queueAttack
+            animator.SetTrigger("queueAttack");
+        }
         Debug.Log("Enemy Preparing Attack!");
     }
 
@@ -123,6 +131,9 @@ public class EnemyController : MonoBehaviour
     void Attack()
     {
         Debug.Log("Enemy Attacking Player!");
+        if (EnemyID == 2) {
+            animator.SetTrigger("attack");
+        }
         int damageValue = 1;
         // Currently set up to deal damage for a single frame
         Collider2D[] playerHit = Physics2D.OverlapCircleAll(attackPoint, hitRange, playerLayer);

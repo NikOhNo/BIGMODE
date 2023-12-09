@@ -865,9 +865,17 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1202651998546620272, guid: 7fcd4e35aa0318540ade87e702bb5650, type: 3}
+      propertyPath: health
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1202651998546620272, guid: 7fcd4e35aa0318540ade87e702bb5650, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1366145624}
+    - target: {fileID: 1202651998546620272, guid: 7fcd4e35aa0318540ade87e702bb5650, type: 3}
+      propertyPath: EnemyID
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1202651998546620272, guid: 7fcd4e35aa0318540ade87e702bb5650, type: 3}
       propertyPath: atkRange
       value: 1
@@ -875,6 +883,10 @@ PrefabInstance:
     - target: {fileID: 1202651998546620272, guid: 7fcd4e35aa0318540ade87e702bb5650, type: 3}
       propertyPath: hitRange
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1202651998546620272, guid: 7fcd4e35aa0318540ade87e702bb5650, type: 3}
+      propertyPath: moveSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1202651998546620272, guid: 7fcd4e35aa0318540ade87e702bb5650, type: 3}
       propertyPath: atkPositionX
@@ -948,46 +960,11 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.01855138
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1202651998546620272, guid: 7fcd4e35aa0318540ade87e702bb5650, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1846091663123919496, guid: 7fcd4e35aa0318540ade87e702bb5650, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1956351868}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fcd4e35aa0318540ade87e702bb5650, type: 3}
---- !u!1 &1956351859 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1846091663123919496, guid: 7fcd4e35aa0318540ade87e702bb5650, type: 3}
-  m_PrefabInstance: {fileID: 1908509479}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1956351868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1956351859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 959016d38d40cb34ca2979c1e4fa4157, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  attackPoint: {x: 0, y: 0}
-  moveSpeed: 5
-  maxVisionDistance: 10
-  atkRange: 1
-  hitRange: 0.75
-  atkPositionX: 1
-  atkDowntime: 0.5
-  queueTime: 0.5
-  health: 3
-  isAttacking: 0
-  player: {fileID: 1366145624}
 --- !u!1001 &1924620750717655491
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1026,11 +1003,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3142420294121490966, guid: 7fcd4e35aa0318540ade87e702bb5650, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.01
+      value: 4.52
       objectReference: {fileID: 0}
     - target: {fileID: 3142420294121490966, guid: 7fcd4e35aa0318540ade87e702bb5650, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.13
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 3142420294121490966, guid: 7fcd4e35aa0318540ade87e702bb5650, type: 3}
       propertyPath: m_LocalPosition.z
