@@ -292,7 +292,20 @@ public class PlayerController : MonoBehaviour
         //play death animation/sfx
         //goto room with last checkpoint
         Debug.Log("You died!");
-        health = maxHealth;
+        
+        GameObject sceneLoader = GameObject.Find("SceneLoader");
+        if (sceneLoader != null) 
+        {
+            sceneLoader.GetComponent<SceneLoader>().RestartLevel();
+        }
+        else //should be able to remove this once we are sure that every scene has SceneLoader
+        {
+            health = maxHealth;
+            UIScript.ChangeHealth(health);
+            recoveryCurrency = 0;
+            Recover();
+        }
+
     }
 
     //you can uncomment this script to see the hitbox for the Melee attacks
@@ -305,6 +318,4 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.position, basicMeleeRange);
     }
     */
-
-
 }
