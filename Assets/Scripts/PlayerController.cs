@@ -9,6 +9,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XR;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 using static UnityEngine.InputSystem.InputAction;
@@ -30,7 +31,7 @@ public class PlayerController : MonoBehaviour
     public SpellShooter SpellShooter => spellShooter;
     public PlayerSettingsSO PlayerSettings => playerSettings;
     public UIController UIController => uiController;
-    public Transform AttackPoint => attackPoint;
+    public Vector3 AttackPoint => CalculateFacingAttackPoint();
     public Vector2 MoveInput => moveInput;
     public Collider2D FeetCollider => feetCollider;
     public SpriteRenderer Sprite { get; private set; }
@@ -142,15 +143,25 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private Vector3 CalculateFacingAttackPoint()
+    {
+        float xSpawnPos = attackPoint.position.x;
+        if (Sprite.flipX)
+        {
+            xSpawnPos += 2 * (attackPoint.parent.position.x - attackPoint.position.x);
+        }
+
+        return new Vector3(xSpawnPos, attackPoint.position.y, 0);
+    }
 }
 
-    //you can uncomment this script to see the hitbox for the Melee attacks
-    /*
-    private void OnDrawGizmosSelected()
-    {
-        if (attackPoint == null)
-            return;
+//you can uncomment this script to see the hitbox for the Melee attacks
+/*
+private void OnDrawGizmosSelected()
+{
+    if (attackPoint == null)
+        return;
 
-        Gizmos.DrawWireSphere(attackPoint.position, basicMeleeRange);
-    }
-    */
+    Gizmos.DrawWireSphere(attackPoint.position, basicMeleeRange);
+}
+*/

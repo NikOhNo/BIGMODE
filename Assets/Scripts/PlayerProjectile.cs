@@ -33,6 +33,7 @@ public class PlayerProjectile : MonoBehaviour
 
     public void Init(PlayerController controller, float dir, int damage, float speedX = -1, float accelerationX = 0, float lifetimeX = -1)//call this after Instantiating to set direction and damage
     {
+        this.controller = controller;
         this.healthSystem = controller.HealthSystem;
         direction = dir;
         damageValue = damage;

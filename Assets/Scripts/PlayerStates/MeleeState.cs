@@ -34,7 +34,7 @@ namespace Assets.Scripts.PlayerStates
 
             //play sword attack animation and sfx
             Debug.Log("Sword basic attack");
-            enemiesHit = Physics2D.OverlapCircleAll(controller.AttackPoint.position, settings.BasicMeleeRange, settings.EnemyLayers);
+            enemiesHit = Physics2D.OverlapCircleAll(controller.AttackPoint, settings.BasicMeleeRange, settings.EnemyLayers);
 
             HandleHitEnemies(enemiesHit, settings.BasicDamageValue);
         }
@@ -45,7 +45,7 @@ namespace Assets.Scripts.PlayerStates
 
             //play spell attack animation and sfx
             Debug.Log("Sword switch attack");
-            enemiesHit = Physics2D.OverlapCircleAll(-controller.AttackPoint.position, settings.SwitchMeleeRange, settings.EnemyLayers);
+            enemiesHit = Physics2D.OverlapCircleAll(-controller.AttackPoint, settings.SwitchMeleeRange, settings.EnemyLayers);
 
             HandleHitEnemies(enemiesHit, settings.SwitchDamageValue);
         }

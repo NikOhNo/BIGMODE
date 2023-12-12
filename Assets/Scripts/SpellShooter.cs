@@ -18,12 +18,7 @@ public class SpellShooter : MonoBehaviour
         controller.Animator.SetTrigger("spellBasicAttack");
         Debug.Log("Spell basic attack");
 
-        float xSpawnPos = controller.AttackPoint.position.x;
-        if (controller.Sprite.flipX)
-        {
-            xSpawnPos += 2 * (controller.AttackPoint.parent.position.x - controller.AttackPoint.position.x);
-        }
-        GameObject spell = Instantiate(controller.PlayerSettings.ProjectilePrefab, new Vector3(xSpawnPos, controller.Rigidbody2D.position.y, 0), transform.rotation);
+        GameObject spell = Instantiate(controller.PlayerSettings.ProjectilePrefab, controller.AttackPoint, transform.rotation);
 
         spell.GetComponent<PlayerProjectile>().Init(controller, direction, damageVal, controller.Rigidbody2D.velocity.x, controller.PlayerSettings.ProjectileAcceleration);
         spell.GetComponent<SpriteRenderer>().flipX = !controller.Sprite.flipX; //sprite for projectile faces opposite direction of player by default, so we need the reverse
