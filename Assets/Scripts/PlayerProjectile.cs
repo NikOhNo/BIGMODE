@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
@@ -6,9 +7,8 @@ using UnityEngine;
 public class PlayerProjectile : MonoBehaviour
 {
 
-    
-    private GameObject playerCtrl;
-    private PlayerController playerCtrlScript;
+    private PlayerController controller;
+    private PlayerHealthSystem healthSystem;
     [SerializeField]
     private float speed = 3f;
     [SerializeField]
@@ -18,11 +18,6 @@ public class PlayerProjectile : MonoBehaviour
     private float direction = 0f; //-1,1
     private int damageValue = 0;
 
-    private void Awake()
-    {
-        playerCtrl = GameObject.Find("Player");
-        playerCtrlScript = playerCtrl.GetComponent<PlayerController>();
-    }
 
     // Update is called once per frame
     void Update()
@@ -36,8 +31,9 @@ public class PlayerProjectile : MonoBehaviour
         }
     }
 
-    public void Init(float dir, int damage, float speedX = -1, float accelerationX = 0, float lifetimeX = -1)//call this after Instantiating to set direction and damage
+    public void Init(PlayerController controller, float dir, int damage, float speedX = -1, float accelerationX = 0, float lifetimeX = -1)//call this after Instantiating to set direction and damage
     {
+        this.healthSystem = controller.HealthSystem;
         direction = dir;
         damageValue = damage;
         if (speedX >= 0)
@@ -59,7 +55,8 @@ public class PlayerProjectile : MonoBehaviour
         if (collision.GetComponent<EnemyController>() != null)
         {
             collision.GetComponent<EnemyController>().Hurt(damageValue);
-            playerCtrlScript.AddRangedRecovery();
+            healthSystem.AddRecoveryCurrency(controller.PlayerSettings.RangedRecovery);
+
             Destroy(gameObject);
         }
     }
