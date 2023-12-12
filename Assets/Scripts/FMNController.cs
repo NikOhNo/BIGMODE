@@ -122,7 +122,7 @@ public class FMNController : MonoBehaviour
         {
             if (player.GetComponent<PlayerController>() != null)
             {
-                player.GetComponent<PlayerController>().Hurt(damageValue);
+                player.GetComponent<PlayerController>().HealthSystem.Hurt(damageValue);
             }
         }
         // If we end up creating a hitbox that lingers we may want to start with the code below instead
