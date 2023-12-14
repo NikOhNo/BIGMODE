@@ -28,15 +28,18 @@ namespace Assets.Scripts.PlayerStates
 
         public override void PerformAttack()
         {
-            base.PerformAttack();
+            if (Time.time - atkTimeStart >= settings.AtkDelay)
+            {
+                base.PerformAttack();
 
-            Collider2D[] enemiesHit = { };
+                Collider2D[] enemiesHit = { };
 
-            //play sword attack animation and sfx
-            Debug.Log("Sword basic attack");
-            enemiesHit = Physics2D.OverlapCircleAll(controller.AttackPoint, settings.BasicMeleeRange, settings.EnemyLayers);
+                //play sword attack animation and sfx
+                Debug.Log("Sword basic attack");
+                enemiesHit = Physics2D.OverlapCircleAll(controller.AttackPoint, settings.BasicMeleeRange, settings.EnemyLayers);
 
-            HandleHitEnemies(enemiesHit, settings.BasicDamageValue);
+                HandleHitEnemies(enemiesHit, settings.BasicDamageValue);
+            }
         }
 
         protected override void PerformSwitchAttack()
