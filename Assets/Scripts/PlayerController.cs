@@ -153,6 +153,18 @@ public class PlayerController : MonoBehaviour
 
         return new Vector3(xSpawnPos, attackPoint.position.y, 0);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //Debug.Log(playerSettings.EnemyLayers.value);
+        //Debug.Log(collision.gameObject.layer);
+        //if (playerSettings.EnemyLayers.value == collision.gameObject.layer) //playerSettings.EnemyLayers.value = 64, collision.gameObject.layer = layerNum in Inspector
+        if (collision.gameObject.layer == 6) //6 == Enemy1 (Layer)
+        {
+            HealthSystem.Hurt(1);
+            //SwitchState(HurtState); //would ideally like to put this in hurt function of health system, but I can't use PlayerController.HurtState there 
+        }
+    }
 }
 
 //you can uncomment this script to see the hitbox for the Melee attacks

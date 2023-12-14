@@ -35,9 +35,11 @@ namespace Assets.Scripts.PlayerStates
 
         public override void PerformAttack()
         {
-            base.PerformAttack();
+            if (Time.time - atkTimeStart >= settings.AtkDelay) {
+                base.PerformAttack();
 
-            controller.SpellShooter.ShootSpell(settings.BasicDamageValue, GetDirection());
+                controller.SpellShooter.ShootSpell(settings.BasicDamageValue, GetDirection());
+            }
         }
 
         protected override void PerformSwitchAttack()
