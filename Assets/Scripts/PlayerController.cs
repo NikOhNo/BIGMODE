@@ -8,6 +8,7 @@ using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.XR;
 using UnityEngine.Rendering;
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
     private Collider2D feetCollider;
 
     //-- PROPERTIES
+    public UnityEvent OnJump = new();
     public PlayerHealthSystem HealthSystem => healthSystem;
     public SpellShooter SpellShooter => spellShooter;
     public PlayerSettingsSO PlayerSettings => playerSettings;
@@ -110,6 +112,8 @@ public class PlayerController : MonoBehaviour
             {
                 playableState.PerformJump();
             }
+
+            OnJump.Invoke();
         }
         else if (context.canceled)
         {

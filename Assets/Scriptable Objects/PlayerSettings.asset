@@ -22,6 +22,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 6263785487918741173, guid: b92a7f89a2b469f49bcb0d0989231350, type: 3}
   speed: 5
   jumpForce: 7.5
+  climbSpeed: 6
   switchWindow: 1
   atkDelay: 0.5
   maxJumpTime: 0.2

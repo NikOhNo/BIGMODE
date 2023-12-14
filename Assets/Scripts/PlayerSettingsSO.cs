@@ -27,6 +27,8 @@ namespace Assets.Scripts
         [SerializeField]
         private float jumpForce = 7.5f;
         [SerializeField]
+        private float climbSpeed = 4f;
+        [SerializeField]
         private float switchWindow = 1f; //tbd may change
         [SerializeField]
         private float atkDelay = 0.5f; //tbd may change
@@ -62,6 +64,7 @@ namespace Assets.Scripts
         public GameObject ProjectilePrefab => projectilePrefab;
         public float Speed => speed; 
         public float JumpForce => jumpForce;
+        public float ClimbSpeed => climbSpeed;
         public float SwitchWindow => switchWindow;
         public float AtkDelay => atkDelay;
         public float MaxJumpTime => maxJumpTime; 
