@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.PlayerStates;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 using UnityEngine.Rendering;
@@ -7,7 +8,7 @@ namespace Assets.Scripts
 {
     public class PlayerHealthSystem
     {
-        private int health;
+        private int health = 5;
         private int recoveryCurrency = 0; //think soul from hollow knight, we can decide on a name later
 
         //-- Cached References

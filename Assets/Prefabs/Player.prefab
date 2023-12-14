@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 965201288928437485}
   - component: {fileID: 3182338438493760759}
   - component: {fileID: -1914316447187008815}
+  - component: {fileID: 7500798688971259741}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -40,7 +41,7 @@ Transform:
   - {fileID: 721210126238059174}
   - {fileID: 4474563895105806405}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2368968420760908611
 SpriteRenderer:
@@ -306,7 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46f7050a259378a4485d59ecbe8f914c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSettings: {fileID: 0}
+  playerSettings: {fileID: 11400000, guid: 7c2aebebdba80884dbd5de97f55fe05a, type: 2}
   attackPoint: {fileID: 4474563895105806405}
   playerUI: {fileID: 0}
   feetCollider: {fileID: 9080664133864259046}
@@ -5280,6 +5281,18 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &7500798688971259741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292712413516176119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c4062b9b243500448753ab5d1593329, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &853051003047749777
 GameObject:
   m_ObjectHideFlags: 0

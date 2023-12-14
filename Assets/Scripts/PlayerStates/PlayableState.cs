@@ -11,7 +11,7 @@ namespace Assets.Scripts.PlayerStates
         protected bool isAttacking = false;
 
         private float jumpTimer = -5f; //initialized as negative to prevent jumping at frame 0
-        private float atkTimeStart = -Mathf.Infinity;
+        protected float atkTimeStart = -Mathf.Infinity;
 
         //-- Cached References
         private Vector2 myVelocity;
