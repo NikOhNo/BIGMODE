@@ -40,6 +40,10 @@ namespace Assets.Scripts
         private float switchMeleeRange = 1f;
         [SerializeField]
         private float projectileAcceleration = 5f;
+        [SerializeField]
+        private float hurtTime = 0.7f;
+        [SerializeField]
+        private float invincibleTime = 1.5f;
 
         //integers
         [SerializeField]
@@ -71,6 +75,8 @@ namespace Assets.Scripts
         public float BasicMeleeRange => basicMeleeRange;
         public float SwitchMeleeRange => switchMeleeRange; 
         public float ProjectileAcceleration => projectileAcceleration;
+        public float HurtTime => hurtTime;
+        public float InvincibleTime => invincibleTime;
         public int BasicDamageValue => basicDamageValue;
         public int SwitchDamageValue => switchDamageValue;
         public int MaxHealth => maxHealth;
