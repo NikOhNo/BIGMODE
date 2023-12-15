@@ -14,6 +14,7 @@ namespace Assets.Scripts.PlayerStates
             elapsedTime = 0f;
             hurtTime = controller.PlayerSettings.HurtTime;
             controller.Sprite.color = Color.red;
+            controller.Rigidbody2D.velocity = Vector3.zero;
         }
 
         public override void PerformState()

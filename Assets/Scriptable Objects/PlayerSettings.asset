@@ -29,6 +29,9 @@ MonoBehaviour:
   basicMeleeRange: 0.5
   switchMeleeRange: 0.5
   projectileAcceleration: 5
+  hurtTime: 0.7
+  invincibleTime: 1.5
+  knockbackForce: 75
   basicDamageValue: 1
   switchDamageValue: 2
   maxHealth: 5

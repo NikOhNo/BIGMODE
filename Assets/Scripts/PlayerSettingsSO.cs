@@ -44,6 +44,8 @@ namespace Assets.Scripts
         private float hurtTime = 0.7f;
         [SerializeField]
         private float invincibleTime = 1.5f;
+        [SerializeField]
+        private float knockbackForce = 3f;
 
         //integers
         [SerializeField]
@@ -77,6 +79,7 @@ namespace Assets.Scripts
         public float ProjectileAcceleration => projectileAcceleration;
         public float HurtTime => hurtTime;
         public float InvincibleTime => invincibleTime;
+        public float KnockbackForce => knockbackForce;
         public int BasicDamageValue => basicDamageValue;
         public int SwitchDamageValue => switchDamageValue;
         public int MaxHealth => maxHealth;
