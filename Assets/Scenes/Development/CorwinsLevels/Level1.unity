@@ -5594,9 +5594,21 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 965201288928437485, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 965201288928437485, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
+      propertyPath: m_Volume
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 965201288928437485, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 742762f1d84ce974781cf0e250345a08, type: 3}
+    - target: {fileID: 965201288928437485, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2162224656283483558, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
       propertyPath: playerUI
       value: 
