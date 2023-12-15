@@ -38,7 +38,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1202651998546620272, guid: 7fcd4e35aa0318540ade87e702bb5650, type: 3}
       propertyPath: moveSpeed
-      value: 5
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 1202651998546620272, guid: 7fcd4e35aa0318540ade87e702bb5650, type: 3}
       propertyPath: queueTime
