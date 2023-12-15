@@ -25,4 +25,9 @@ public abstract class SwitchBase : MonoBehaviour
     {
         return collision.gameObject.layer != LayerMask.NameToLayer("default");
     }
+
+    protected virtual bool ColliderValid(Collider2D collider)
+    {
+        return collider.gameObject.layer != LayerMask.NameToLayer("default");
+    }
 }

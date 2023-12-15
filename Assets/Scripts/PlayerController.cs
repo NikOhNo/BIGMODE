@@ -184,6 +184,11 @@ public class PlayerController : MonoBehaviour
             HealthSystem.Hurt(1);
         }
     }
+
+    public void Die() //Needed for DeathField
+    {
+        HealthSystem.Death();
+    }
 }
 
 //you can uncomment this script to see the hitbox for the Melee attacks
