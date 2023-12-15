@@ -331,11 +331,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8708626833781316570, guid: a509582526539a54eb8e9da1bb255337, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 61.67
+      value: -1.1664667
       objectReference: {fileID: 0}
     - target: {fileID: 8708626833781316570, guid: a509582526539a54eb8e9da1bb255337, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.59
+      value: -0.011399984
       objectReference: {fileID: 0}
     - target: {fileID: 8708626833781316570, guid: a509582526539a54eb8e9da1bb255337, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9210,11 +9210,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7704109872617072811, guid: 531c66e736c08f34b9c41b4d54ca5cdd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 65.075
+      value: -4.5950003
       objectReference: {fileID: 0}
     - target: {fileID: 7704109872617072811, guid: 531c66e736c08f34b9c41b4d54ca5cdd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.766
+      value: -1.076485
       objectReference: {fileID: 0}
     - target: {fileID: 8188710865193304600, guid: 531c66e736c08f34b9c41b4d54ca5cdd, type: 3}
       propertyPath: m_ChildCameras.Array.size
@@ -10987,11 +10987,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9203228930035397080, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 61.67
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 9203228930035397080, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.89
+      value: -2.952485
       objectReference: {fileID: 0}
     - target: {fileID: 9203228930035397080, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
       propertyPath: m_LocalPosition.z

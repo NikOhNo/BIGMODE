@@ -460,7 +460,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5086513671213785872, guid: ab8aab65b705df141877aa47529d0dae, type: 3}
       propertyPath: m_Name
-      value: Corwin Mover Level Variant (1)
+      value: floating platform 2
       objectReference: {fileID: 0}
     - target: {fileID: 5853985920325059610, guid: ab8aab65b705df141877aa47529d0dae, type: 3}
       propertyPath: m_Color.b
@@ -605,7 +605,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2006593767539220371, guid: 0a087657771205e4082f1a6f849ec9d8, type: 3}
       propertyPath: m_Name
-      value: 1-Time Switch (1)
+      value: Stairs switch2
       objectReference: {fileID: 0}
     - target: {fileID: 4008025708764851894, guid: 0a087657771205e4082f1a6f849ec9d8, type: 3}
       propertyPath: reactors.Array.size
@@ -768,7 +768,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1202651998546620272, guid: 7fcd4e35aa0318540ade87e702bb5650, type: 3}
       propertyPath: moveSpeed
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1202651998546620272, guid: 7fcd4e35aa0318540ade87e702bb5650, type: 3}
       propertyPath: atkPositionX
@@ -4614,7 +4614,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5086513671213785872, guid: ab8aab65b705df141877aa47529d0dae, type: 3}
       propertyPath: m_Name
-      value: Corwin Mover Level Variant
+      value: FOLATING PLATFORM 1
       objectReference: {fileID: 0}
     - target: {fileID: 5853985920325059610, guid: ab8aab65b705df141877aa47529d0dae, type: 3}
       propertyPath: m_Color.b
@@ -5362,7 +5362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2006593767539220371, guid: 0a087657771205e4082f1a6f849ec9d8, type: 3}
       propertyPath: m_Name
-      value: 1-Time Switch
+      value: Stairs switch1
       objectReference: {fileID: 0}
     - target: {fileID: 4008025708764851894, guid: 0a087657771205e4082f1a6f849ec9d8, type: 3}
       propertyPath: reactors.Array.size
@@ -5855,7 +5855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8708626833781316570, guid: a509582526539a54eb8e9da1bb255337, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.1305342
+      value: -1.1225696
       objectReference: {fileID: 0}
     - target: {fileID: 8708626833781316570, guid: a509582526539a54eb8e9da1bb255337, type: 3}
       propertyPath: m_LocalPosition.y
