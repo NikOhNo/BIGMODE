@@ -8,6 +8,8 @@ namespace Assets.Scripts
 {
     public class PlayerHealthSystem
     {
+        bool invincible = false;
+
         private int health = 5;
         private int recoveryCurrency = 0; //think soul from hollow knight, we can decide on a name later
 
@@ -43,14 +45,29 @@ namespace Assets.Scripts
 
         public void Hurt(int damage)
         {
+            if (invincible)
+            {
+                return;
+            }
+            EnableInvulnerability();
+
             //play hurt animation/sfx
             //consider dealing knockback to player
             health -= damage;
+            controller.SwitchState(controller.HurtState);
             controller.UIController.ChangeHealth(health);
             if (health < 1)
             {
                 Death();
             }
+        }
+
+        private void EnableInvulnerability()
+        {
+            invincible = true;
+            controller.InvokeAfterTime(
+                () => invincible = false, 
+                controller.PlayerSettings.InvincibleTime);
         }
 
         public void Death()

@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
     private Collider2D feetCollider;
 
     //-- PROPERTIES
+    public IState PreviousState => prevState;
+    public IState CurrentState => currState;
     public UnityEvent OnJump = new();
     public PlayerHealthSystem HealthSystem => healthSystem;
     public SpellShooter SpellShooter => spellShooter;
@@ -50,6 +52,7 @@ public class PlayerController : MonoBehaviour
     //-- FIELDS
     private Vector2 moveInput;
     private UIController uiController;
+    private IState prevState;
     private IState currState;
     private PlayerHealthSystem healthSystem;
     private SpellShooter spellShooter;
@@ -94,6 +97,7 @@ public class PlayerController : MonoBehaviour
     public void SwitchState(IState newState)
     {
         currState?.ExitState();
+        prevState = currState;
         currState = newState;
         currState.EnterState(this);
     }
@@ -147,6 +151,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void InvokeAfterTime(UnityAction action, float time)
+    {
+        StartCoroutine(InvokeAfterTimeCoroutine(action, time));
+    }
+
+    IEnumerator InvokeAfterTimeCoroutine(UnityAction action, float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        action.Invoke();
+    }
+
     private Vector3 CalculateFacingAttackPoint()
     {
         float xSpawnPos = attackPoint.position.x;
@@ -166,7 +182,6 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.layer == 6) //6 == Enemy1 (Layer)
         {
             HealthSystem.Hurt(1);
-            //SwitchState(HurtState); //would ideally like to put this in hurt function of health system, but I can't use PlayerController.HurtState there 
         }
     }
 }
