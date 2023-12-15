@@ -206,18 +206,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &131683239 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3408116375619215436, guid: 263bc62ebca0545c3b463405e655ec29, type: 3}
+--- !u!114 &131683242 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6159544798608759991, guid: 263bc62ebca0545c3b463405e655ec29, type: 3}
   m_PrefabInstance: {fileID: 499603072}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &131683242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 131683239}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a099540c48db7f44877d4637e54e427, type: 3}
@@ -511,10 +505,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3408116375619215436, guid: 263bc62ebca0545c3b463405e655ec29, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 131683242}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 263bc62ebca0545c3b463405e655ec29, type: 3}
 --- !u!1001 &655063756
 PrefabInstance:
@@ -524,6 +515,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 833252925898308042, guid: a509582526539a54eb8e9da1bb255337, type: 3}
+      propertyPath: orthographic size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3699099124731507199, guid: a509582526539a54eb8e9da1bb255337, type: 3}
       propertyPath: m_Name
       value: Main Camera
@@ -534,15 +529,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8708626833781316570, guid: a509582526539a54eb8e9da1bb255337, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.1599932
+      value: -3.8150377
       objectReference: {fileID: 0}
     - target: {fileID: 8708626833781316570, guid: a509582526539a54eb8e9da1bb255337, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.011399984
+      value: -1.5114
       objectReference: {fileID: 0}
     - target: {fileID: 8708626833781316570, guid: a509582526539a54eb8e9da1bb255337, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 8708626833781316570, guid: a509582526539a54eb8e9da1bb255337, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1894,6 +1889,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3003661489511218661, guid: 531c66e736c08f34b9c41b4d54ca5cdd, type: 3}
+      propertyPath: m_CameraDistance
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3956142951013151499, guid: 531c66e736c08f34b9c41b4d54ca5cdd, type: 3}
       propertyPath: m_Name
       value: State-Driven Camera
@@ -1902,6 +1901,10 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 1366145624}
+    - target: {fileID: 4855862143863682113, guid: 531c66e736c08f34b9c41b4d54ca5cdd, type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5546468709854070919, guid: 531c66e736c08f34b9c41b4d54ca5cdd, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -1953,6 +1956,10 @@ PrefabInstance:
     - target: {fileID: 7704109872617072811, guid: 531c66e736c08f34b9c41b4d54ca5cdd, type: 3}
       propertyPath: m_LocalPosition.y
       value: -1.274
+      objectReference: {fileID: 0}
+    - target: {fileID: 7704109872617072811, guid: 531c66e736c08f34b9c41b4d54ca5cdd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 8188710865193304600, guid: 531c66e736c08f34b9c41b4d54ca5cdd, type: 3}
       propertyPath: m_ChildCameras.Array.size
@@ -2204,11 +2211,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9147189321774683088, guid: 7bfd732ffe600e448ae000215d91a98a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.54
+      value: 10.83
       objectReference: {fileID: 0}
     - target: {fileID: 9147189321774683088, guid: 7bfd732ffe600e448ae000215d91a98a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.83
+      value: -1.74
       objectReference: {fileID: 0}
     - target: {fileID: 9147189321774683088, guid: 7bfd732ffe600e448ae000215d91a98a, type: 3}
       propertyPath: m_LocalPosition.z
