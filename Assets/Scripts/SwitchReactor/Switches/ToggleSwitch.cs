@@ -7,9 +7,10 @@ namespace Assets.Scripts.SwitchReactor.Switches
     {
         bool isActive = false;
 
-        private void Awake()
+        protected override void Awake()
         {
             audioSource = GetComponent<AudioSource>();
+            base.Awake();
         }
 
         protected override bool CollisionValid(Collision2D collision)
