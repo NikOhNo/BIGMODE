@@ -5,9 +5,10 @@ namespace Assets.Scripts.SwitchReactor.Switches
 {
     public class PressSwitch : SwitchBase
     {
-        private void Awake()
+        protected override void Awake()
         {
             audioSource = GetComponent<AudioSource>();
+            base.Awake();
         }
 
         protected override bool CollisionValid(Collision2D collision)

@@ -6,9 +6,10 @@ public class OneTimeSwitch : SwitchBase
 {
     bool isActivated = false;   // this switch can only be activated once and will stay active
 
-    private void Awake()
+    protected override void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        base.Awake();
     }
 
     protected override bool CollisionValid(Collision2D collision)

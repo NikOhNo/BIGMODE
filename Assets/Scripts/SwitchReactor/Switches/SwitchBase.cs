@@ -15,7 +15,7 @@ public abstract class SwitchBase : MonoBehaviour
     readonly protected UnityEvent switchDeactivated = new();
     protected AudioSource audioSource;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         foreach (IReactor reactor in reactors)
         {
