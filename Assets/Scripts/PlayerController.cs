@@ -181,7 +181,7 @@ public class PlayerController : MonoBehaviour
         //if (playerSettings.EnemyLayers.value == collision.gameObject.layer) //playerSettings.EnemyLayers.value = 64, collision.gameObject.layer = layerNum in Inspector
         if (collision.gameObject.layer == 6) //6 == Enemy1 (Layer)
         {
-            HealthSystem.Hurt(1);
+            HealthSystem.Hurt(1, collision.gameObject.transform.position);
         }
     }
 

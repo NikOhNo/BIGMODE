@@ -43,7 +43,7 @@ namespace Assets.Scripts
             controller.UIController.ChangeRecovery(recoveryCurrency);
         }
 
-        public void Hurt(int damage)
+        public void Hurt(int damage, Vector3 hurterPosition)
         {
             if (invincible)
             {
@@ -60,6 +60,7 @@ namespace Assets.Scripts
             {
                 Death();
             }
+            TakeKnockback(hurterPosition);
         }
 
         private void EnableInvulnerability()
@@ -68,6 +69,15 @@ namespace Assets.Scripts
             controller.InvokeAfterTime(
                 () => invincible = false, 
                 controller.PlayerSettings.InvincibleTime);
+        }
+
+        private void TakeKnockback(Vector3 position)
+        {
+            Vector3 direction = controller.transform.position - position;
+            direction.Normalize();
+
+            float knockbackForce = controller.PlayerSettings.KnockbackForce;
+            controller.Rigidbody2D.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
         }
 
         public void Death()
