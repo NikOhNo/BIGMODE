@@ -11,6 +11,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private Vector2 attackPoint;
     [SerializeField]
+    private AudioClip attackClip;
+    [SerializeField]
     private float moveSpeed = 5f;
     [SerializeField]
     private float maxVisionDistance = 10f;
@@ -38,6 +40,7 @@ public class EnemyController : MonoBehaviour
     private Animator animator;
     private Rigidbody2D myRb;
     public Transform player;
+    private AudioSource myAudioSource;
     private Dictionary<bool, int> boolToInt = new Dictionary<bool, int> { { false, -1 }, { true, 1 } };
     private ParticleSystem part;
     
@@ -50,6 +53,7 @@ public class EnemyController : MonoBehaviour
         attackPoint.x = myRb.position.x + atkPositionX;
         attackPoint.y = myRb.position.y;
         part = GetComponent<ParticleSystem>();
+        myAudioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -134,6 +138,7 @@ public class EnemyController : MonoBehaviour
         if (EnemyID == 2) {
             animator.SetTrigger("attack");
         }
+        myAudioSource.PlayOneShot(attackClip);
         int damageValue = 1;
         // Currently set up to deal damage for a single frame
         Collider2D[] playerHit = Physics2D.OverlapCircleAll(attackPoint, hitRange, playerLayer);

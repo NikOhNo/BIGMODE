@@ -6,6 +6,11 @@ public class OneTimeSwitch : SwitchBase
 {
     bool isActivated = false;   // this switch can only be activated once and will stay active
 
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     protected override bool CollisionValid(Collision2D collision)
     {
         return base.CollisionValid(collision);
@@ -34,6 +39,7 @@ public class OneTimeSwitch : SwitchBase
 
     private void ActivateSwitch()
     {
+        audioSource.PlayOneShot(switchSFX);
         isActivated = true;
         Debug.Log("switch activated");
         GetComponent<SpriteRenderer>().color = Color.green;    // TEMPORARY: just to show for rn may switch sprites or something in future

@@ -16,6 +16,8 @@ MonoBehaviour:
   landSFX: {fileID: 8300000, guid: a687a013f508c1346ad640d9697cf2e8, type: 3}
   healSFX: {fileID: 8300000, guid: 5284fb53c71651741ad5a1777d35ff19, type: 3}
   switchSFX: {fileID: 8300000, guid: 27a3ce2e5ef69f14588964001a5e713a, type: 3}
+  slashSFX: {fileID: 8300000, guid: 78ae24eba8db2fd44b428bec64f61b0e, type: 3}
+  hitSFX: {fileID: 8300000, guid: cedd7cf73d623b14c93072ff86b973ce, type: 3}
   enemyLayers:
     serializedVersion: 2
     m_Bits: 64

@@ -5,6 +5,11 @@ namespace Assets.Scripts.SwitchReactor.Switches
 {
     public class PressSwitch : SwitchBase
     {
+        private void Awake()
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
+
         protected override bool CollisionValid(Collision2D collision)
         {
             return base.CollisionValid(collision);
@@ -14,6 +19,7 @@ namespace Assets.Scripts.SwitchReactor.Switches
         {
             if (CollisionValid(collision))
             {
+                audioSource.PlayOneShot(switchSFX);
                 Debug.Log("switch activated");
                 GetComponent<SpriteRenderer>().color = Color.yellow;    // TEMPORARY: just to show for rn may switch sprites or something in future
                 switchActivated.Invoke();
@@ -24,6 +30,7 @@ namespace Assets.Scripts.SwitchReactor.Switches
         {
             if (CollisionValid(collision))
             {
+                audioSource.PlayOneShot(switchSFX);
                 Debug.Log("switch deactivated");    
                 GetComponent<SpriteRenderer>().color = Color.red;       // TEMPORARY: just to show for rn may switch sprites or something in future
                 switchDeactivated.Invoke();
