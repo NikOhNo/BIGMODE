@@ -10,6 +10,10 @@ public class PlayerProjectile : MonoBehaviour
     private PlayerController controller;
     private PlayerHealthSystem healthSystem;
     [SerializeField]
+    private AudioClip fireHit;
+    [SerializeField]
+    private AudioClip fireCast;
+    [SerializeField]
     private float speed = 3f;
     [SerializeField]
     private float lifetime = 3f;
@@ -18,6 +22,17 @@ public class PlayerProjectile : MonoBehaviour
     private float direction = 0f; //-1,1
     private int damageValue = 0;
 
+    private AudioSource AudioSource;
+
+    private void Awake()
+    {
+        AudioSource = GetComponent<AudioSource>();
+    }
+
+    private void Start()
+    {
+        AudioSource.PlayOneShot(fireCast);
+    }
 
     // Update is called once per frame
     void Update()
@@ -57,7 +72,7 @@ public class PlayerProjectile : MonoBehaviour
         {
             collision.GetComponent<EnemyController>().Hurt(damageValue);
             healthSystem.AddRecoveryCurrency(controller.PlayerSettings.RangedRecovery);
-
+            AudioSource.PlayOneShot(fireHit);
             Destroy(gameObject);
         }
     }

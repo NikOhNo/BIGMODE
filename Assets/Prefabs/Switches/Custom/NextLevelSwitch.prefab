@@ -145,3 +145,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reactors:
   - {fileID: 0}
+  switchSFX: {fileID: 8300000, guid: 6208555c40a9b514ebe5a274dfe8f7af, type: 3}

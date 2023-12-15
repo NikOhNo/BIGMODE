@@ -7,6 +7,11 @@ namespace Assets.Scripts.SwitchReactor.Switches
     {
         bool isActive = false;
 
+        private void Awake()
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
+
         protected override bool CollisionValid(Collision2D collision)
         {
             return base.CollisionValid(collision);
@@ -34,6 +39,7 @@ namespace Assets.Scripts.SwitchReactor.Switches
 
         private void ActivateSwitch() 
         {
+            audioSource.PlayOneShot(switchSFX);
             if (isActive)
             {
                 isActive = false;

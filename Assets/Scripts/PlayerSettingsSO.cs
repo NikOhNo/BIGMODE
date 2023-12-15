@@ -17,6 +17,10 @@ namespace Assets.Scripts
         [SerializeField]
         private AudioClip switchSFX;
         [SerializeField]
+        private AudioClip slashSFX;
+        [SerializeField]
+        private AudioClip hitSFX;
+        [SerializeField]
         private LayerMask enemyLayers;
         [SerializeField]
         private GameObject projectilePrefab;
@@ -66,6 +70,8 @@ namespace Assets.Scripts
         public AudioClip LandSFX => landSFX;
         public AudioClip HealSFX => healSFX;
         public AudioClip SwitchSFX => switchSFX; 
+        public AudioClip SlashSFX => slashSFX;
+        public AudioClip HitSFX => hitSFX;
         public LayerMask EnemyLayers => enemyLayers; 
         public GameObject ProjectilePrefab => projectilePrefab;
         public float Speed => speed; 

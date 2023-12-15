@@ -8,9 +8,12 @@ public abstract class SwitchBase : MonoBehaviour
 {
     [SerializeField]
     List<ReactorBase> reactors = new();
+    [SerializeField]
+    protected AudioClip switchSFX;
 
     readonly protected UnityEvent switchActivated = new();
     readonly protected UnityEvent switchDeactivated = new();
+    protected AudioSource audioSource;
 
     private void Awake()
     {

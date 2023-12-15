@@ -47,6 +47,7 @@ namespace Assets.Scripts.PlayerStates
             Collider2D[] enemiesHit = { };
 
             //play spell attack animation and sfx
+            controller.AudioSource.PlayOneShot(settings.SlashSFX);
             Debug.Log("Sword switch attack");
             enemiesHit = Physics2D.OverlapCircleAll(-controller.AttackPoint, settings.SwitchMeleeRange, settings.EnemyLayers);
 
@@ -63,6 +64,7 @@ namespace Assets.Scripts.PlayerStates
                     controller.HealthSystem.AddRecoveryCurrency(settings.MeleeRecovery);
                 }
             }
+            controller.AudioSource.PlayOneShot(settings.HitSFX);
         }
 
         public override void SwitchState()
