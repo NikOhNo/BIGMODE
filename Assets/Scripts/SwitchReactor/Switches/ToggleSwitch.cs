@@ -12,25 +12,43 @@ namespace Assets.Scripts.SwitchReactor.Switches
             return base.CollisionValid(collision);
         }
 
+        protected override bool ColliderValid(Collider2D collider)
+        {
+            return base.ColliderValid(collider);
+        }
+
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (CollisionValid(collision))
             {
-                if (isActive)
-                {
-                    isActive = false;
-                    Debug.Log("switch deactivated");
-                    GetComponent<SpriteRenderer>().color = Color.red;       // TEMPORARY: just to show for rn may switch sprites or something in future
-                    switchDeactivated.Invoke();
-                }
-                else
-                {
-                    isActive = true;
-                    Debug.Log("switch activated");
-                    GetComponent<SpriteRenderer>().color = Color.green;     // TEMPORARY: just to show for rn may switch sprites or something in future
-                    switchActivated.Invoke();
-                }
+                ActivateSwitch();
             }
         }
+        private void OnTriggerEnter2D(Collider2D collider) //called when projectile collides
+        {
+            if (ColliderValid(collider))
+            {
+                ActivateSwitch();
+            }
+        }
+
+        private void ActivateSwitch() 
+        {
+            if (isActive)
+            {
+                isActive = false;
+                Debug.Log("switch deactivated");
+                GetComponent<SpriteRenderer>().color = Color.red;       // TEMPORARY: just to show for rn may switch sprites or something in future
+                switchDeactivated.Invoke();
+            }
+            else
+            {
+                isActive = true;
+                Debug.Log("switch activated");
+                GetComponent<SpriteRenderer>().color = Color.green;     // TEMPORARY: just to show for rn may switch sprites or something in future
+                switchActivated.Invoke();
+            }
+        }
+
     }
 }
