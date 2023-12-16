@@ -34,7 +34,8 @@ namespace Assets.Scripts.PlayerStates
 
                 Collider2D[] enemiesHit = { };
 
-                //play sword attack animation and sfx
+                controller.Animator.SetTrigger("meleeBasicAttack");
+                controller.AudioSource.PlayOneShot(settings.SlashSFX);
                 Debug.Log("Sword basic attack");
                 enemiesHit = Physics2D.OverlapCircleAll(controller.AttackPoint, settings.BasicMeleeRange, settings.EnemyLayers);
 
@@ -46,7 +47,8 @@ namespace Assets.Scripts.PlayerStates
         {
             Collider2D[] enemiesHit = { };
 
-            //play spell attack animation and sfx
+
+            controller.Animator.SetTrigger("meleeBasicAttack");
             controller.AudioSource.PlayOneShot(settings.SlashSFX);
             Debug.Log("Sword switch attack");
             enemiesHit = Physics2D.OverlapCircleAll(-controller.AttackPoint, settings.SwitchMeleeRange, settings.EnemyLayers);
