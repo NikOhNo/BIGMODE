@@ -139,7 +139,7 @@ MonoBehaviour:
   fireHit: {fileID: 8300000, guid: daf04cb190b201a4e9fc8d877b0def08, type: 3}
   fireCast: {fileID: 8300000, guid: 967a750b57e90b948846a958b192eb3d, type: 3}
   speed: 3
-  lifetime: 3
+  lifetime: 1.5
   acceleration: 0
 --- !u!95 &3626325036387506580
 Animator:
