@@ -44,7 +44,6 @@ namespace Assets.Scripts.PlayerStates
 
         protected override void PerformSwitchAttack()
         {
-            //play spell attack animation and sfx
             Debug.Log("Spell switch attack");
             controller.SpellShooter.ShootSpell(settings.SwitchDamageValue, GetDirection());
         }

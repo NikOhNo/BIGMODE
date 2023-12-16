@@ -50,8 +50,9 @@ namespace Assets.Scripts.PlayerStates
             controller.Animator.SetTrigger("switch");
             controller.AudioSource.PlayOneShot(settings.SwitchSFX);
             //switch animation somewhere here
-            if (Time.time - atkTimeStart <= settings.SwitchWindow) //if within switch window, do switch attack
+            if (Time.time - atkTimeStart <= settings.SwitchWindow && Time.time - atkTimeStart >= settings.AtkDelay) //if within switch window, do switch attack
             {
+                atkTimeStart = Time.time;
                 PerformSwitchAttack();
             }
         }
