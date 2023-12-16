@@ -5812,7 +5812,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8708626833781316570, guid: a509582526539a54eb8e9da1bb255337, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.1237855
+      value: -1.1216564
       objectReference: {fileID: 0}
     - target: {fileID: 8708626833781316570, guid: a509582526539a54eb8e9da1bb255337, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6819,12 +6819,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 965201288928437485, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
       propertyPath: m_Volume
-      value: 0.25
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 965201288928437485, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 742762f1d84ce974781cf0e250345a08, type: 3}
+      objectReference: {fileID: 8300000, guid: c2d914a82bae4cd4db3d21c84894e58c, type: 3}
     - target: {fileID: 965201288928437485, guid: bfcbbe56022dc6643854f54deddf060a, type: 3}
       propertyPath: m_PlayOnAwake
       value: 1

@@ -24,25 +24,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Development/CorwinsLevels/Level3.unity
     guid: e268a6f43c2cde241b2704b4345f2494
   - enabled: 1
-    path: Assets/Scenes/Development/CorwinsLevels/Level4.unity
-    guid: f770b6ea935b2d942a5203053335f5d8
-  - enabled: 1
     path: Assets/Scenes/Development/CorwinsLevels/Level5.unity
     guid: f7521a08efcafff42858fc739aaabbfc
   - enabled: 1
-    path: Assets/Scenes/Development/CorwinsLevels/Level6.unity
-    guid: 9f0bcae8fd7a7314caecca6af4f9324d
-  - enabled: 1
-    path: Assets/Scenes/Development/CorwinsLevels/Level7.unity
-    guid: b4280e8688646e14aa9012a218c9035c
-  - enabled: 1
-    path: Assets/Scenes/Development/CorwinsLevels/Level8.unity
-    guid: 288ecc64c767c454aa394dc19b51aa38
-  - enabled: 1
-    path: Assets/Scenes/Development/CorwinsLevels/Level9.unity
-    guid: 56a0743d1a362de47a8a4f6f590e34d3
-  - enabled: 1
-    path: Assets/Scenes/Development/CorwinsLevels/Level10.unity
-    guid: d5fae9abea5730e469f6ac17c5f09ce1
+    path: Assets/Scenes/Development/CorwinsLevels/Level4.unity
+    guid: cc92840faa68b1f4a8e9e0455fa68de1
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 377f92ea459c1c046acd9a7d7beaf273, type: 2}
