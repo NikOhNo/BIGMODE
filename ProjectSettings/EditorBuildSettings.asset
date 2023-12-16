@@ -29,5 +29,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Development/CorwinsLevels/Level4.unity
     guid: cc92840faa68b1f4a8e9e0455fa68de1
+  - enabled: 1
+    path: Assets/Scenes/Development/CorwinsLevels/Level6.unity
+    guid: 21971f5492b5ead43a9840cc35f8eca0
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 377f92ea459c1c046acd9a7d7beaf273, type: 2}
